@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\settingsController;
+use App\Http\Controllers\companyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,9 @@ use App\Http\Controllers\settingsController;
     //SETTINGS
     Route::get('/system-setup', [settingsController::class, 'index'])->name('settings');
     Route::post('/system-setup', [settingsController::class, 'update'])->name('settings.post');
+    //Company
+    Route::get('/company', [companyController::class, 'index'])->name('company');
+    Route::post('/company', [companyController::class, 'update'])->name('company.post');
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');
     Route::post('/login', [loginController::class, 'view'])->name('login');  

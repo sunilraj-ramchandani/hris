@@ -1,8 +1,8 @@
 <nav class="main-menu">
-    <ul>
+    <ul class = "mt-4">
         <li>
             <a href="http://justinfarrow.com">
-                <i class="fa fa-home fa-2x"></i>
+                <i class="fa fa-home pt-2"></i>
                 <span class="nav-text">
                     Dashboard
                 </span>
@@ -12,9 +12,19 @@
         <hr style = "color:white;'">
         <li class="has-subnav">
             <a href="/system-setup">
-                <i class="fa fa-laptop fa-2x"></i>
+                <i class="fa fa-laptop pt-2"></i>
                 <span class="nav-text">
                     System Setup
+                </span>
+            </a>
+            
+        </li>
+        <hr style = "color:white;'">
+        <li class="has-subnav">
+            <a href="/company">
+                <i class="fa fa-building pt-2"></i>
+                <span class="nav-text">
+                    Company
                 </span>
             </a>
             
