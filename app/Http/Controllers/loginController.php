@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Company;
 use Carbon\Carbon;
 use Session;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,8 @@ class loginController extends Controller
 {
     public function index()
     {
-        return view('login');
+        $company = Company::getCompany();
+        return view('login',compact('company'));
     }
     public function view(Request $request)
     {
@@ -21,7 +23,7 @@ class loginController extends Controller
             $user_pass = DB::select('select TOP 1 password,id from hris.users where name = :name',['name' => request('username')]);
             foreach($user_pass as $passwords){
                 if(Hash::check(request('password'), $passwords->password)){
-                    session(['user' => request('username'),'id' => $passwords->id]);
+                    session(['user' => request('username'),'id' => $passwords->id,'company' => request('company')]);
                     return redirect()->route('home');
                 }else{
                     Session::flush();

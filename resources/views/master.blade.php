@@ -18,5 +18,11 @@
             @include('includes.sidebar')
         @endif
         @yield('content')
+        @include('includes.custom_field')
     </body>
+    <script>
+        $(".add_custom_field").click(function(){
+            $("#field_table").val($(this).data("table"));
+        });
+    </script>
 </html>

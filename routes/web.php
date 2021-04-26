@@ -5,6 +5,7 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\settingsController;
 use App\Http\Controllers\companyController;
+use App\Http\Controllers\customFieldController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,4 +29,7 @@ use App\Http\Controllers\companyController;
     Route::post('/login', [loginController::class, 'view'])->name('login');  
     //LOGOUT
     Route::get('/logout', [loginController::class, 'logout'])->name('logout');
+
+    //Custom Field
+    Route::post('/custom_field', [customFieldController::class, 'update'])->name('custom_field.post'); 
 

@@ -13,6 +13,11 @@
         {{csrf_field()}}
         <input type="text" name="username" id="username" class="un"  align="center" placeholder="Username">
         <input type="password" name="password" id="password" class="pass"  align="center" placeholder="Password">
+        <select class = "un" name="company" style="text-align-last: center;">
+            @foreach($company as $cmp)
+            <option value={{$cmp->id}}>Company: {{$cmp->name}}</option>
+            @endforeach
+        </select>
         <button class="submit">Sign in</button>
         <p class="forgot" align="center"><a href="#">Forgot Password?</p>
     </form>                      
