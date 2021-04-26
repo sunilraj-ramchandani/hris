@@ -1,4 +1,4 @@
-<div class="area"></div><nav class="main-menu">
+<nav class="main-menu">
     <ul>
         <li>
             <a href="http://justinfarrow.com">
@@ -11,7 +11,7 @@
         </li>
         <hr style = "color:white;'">
         <li class="has-subnav">
-            <a href="#">
+            <a href="/system-setup">
                 <i class="fa fa-laptop fa-2x"></i>
                 <span class="nav-text">
                     System Setup

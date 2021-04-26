@@ -21,7 +21,7 @@ class loginController extends Controller
             $user_pass = DB::table('users')->where('name', request('username'))->pluck('password')->first();
             if(Hash::check(request('password'), $user_pass)){
                 session(['user' => request('username')]);
-                return view('user.index');
+                return redirect()->route('home');
             }else{
                 Session::flush();
                 $error_msg = "Username/Password Incorrect";
