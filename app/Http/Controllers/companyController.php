@@ -13,14 +13,13 @@ use Session;
 class companyController extends Controller
 {
     public function index(){
-        if(User::getUser()->hasRole('company-edit') || User::getUser()->hasRole('company-view') ){
-            if(User::getUser()->hasRole('company-edit')){
+        if(User::hasRole('company-edit') || User::hasRole('company-view') ){
+            if(User::hasRole('company-edit')){
                 $edit_roles = "edit";
             }else{
                 $edit_roles = "view";
             }
-            $fields = CustomField::getFields('company');
-            return view('user.company',compact('edit_roles','fields'));
+            return view('user.company',compact('edit_roles'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

@@ -16,17 +16,20 @@ class loginController extends Controller
     }
     public function view(Request $request)
     {
-        $user = User::where('name',request('username'))->count();
+        $user = DB::select('select count(*) from hris.users where name = :name',['name' => request('username')]);
         if($user > 0){
-            $user_pass = DB::table('users')->where('name', request('username'))->pluck('password')->first();
-            if(Hash::check(request('password'), $user_pass)){
-                session(['user' => request('username')]);
-                return redirect()->route('home');
-            }else{
-                Session::flush();
-                $error_msg = "Username/Password Incorrect";
-                return redirect()->route('login')->with([ 'error_msg' => $error_msg ]);
-            }     
+            $user_pass = DB::select('select TOP 1 password,id from hris.users where name = :name',['name' => request('username')]);
+            foreach($user_pass as $passwords){
+                if(Hash::check(request('password'), $passwords->password)){
+                    session(['user' => request('username'),'id' => $passwords->id]);
+                    return redirect()->route('home');
+                }else{
+                    Session::flush();
+                    $error_msg = "Username/Password Incorrect";
+                    return redirect()->route('login')->with([ 'error_msg' => $error_msg ]);
+                }   
+            }
+              
         }else{
             Session::flush();
             $error_msg = "Username doesn't Exist";

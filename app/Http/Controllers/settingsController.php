@@ -13,9 +13,9 @@ use Session;
 class settingsController extends Controller
 {
     public function index(){
-        if(User::getUser()->hasRole('setup-edit') || User::getUser()->hasRole('setup-view') ){
-            $setups = Setup::all();
-            if(User::getUser()->hasRole('setup-edit')){
+        if(User::hasRole('setup-edit') || User::hasRole('setup-view') ){
+            $setups = Setup::getAll();
+            if(User::hasRole('setup-edit')){
                 $edit_roles = "edit";
             }else{
                 $edit_roles = "view";
@@ -36,9 +36,7 @@ class settingsController extends Controller
             }else{
                 $status = 0;
             }
-            $setup = Setup::find($i);
-            $setup->status = $status;
-            $setup->save();
+            $setup = Setup::update_table($status,$i);
         }
         $success_msg = "Successfully updated system settings";
         return redirect()->route('settings')->with([ 'success_msg' => $success_msg ]);
