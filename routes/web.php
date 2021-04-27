@@ -24,6 +24,8 @@ use App\Http\Controllers\customFieldController;
     //Company
     Route::get('/company', [companyController::class, 'index'])->name('company');
     Route::post('/company', [companyController::class, 'update'])->name('company.post');
+    Route::post('/company-ajax', [companyController::class, 'get_datatables'])->name('company.ajax');
+    
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');
     Route::post('/login', [loginController::class, 'view'])->name('login');  

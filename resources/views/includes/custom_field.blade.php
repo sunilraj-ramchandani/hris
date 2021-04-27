@@ -34,7 +34,9 @@
               <input type="text" min="1" max="255" name="field_value" class="mt-2 form-control">
             </div>
           </div>
-          <button class="btn btn-primary">Add New Field</button>
+          <div class="form-group mt-4">
+            <button class="btn btn-primary">Add New Field</button>
+          </div>
         </div>
         </form>
       </div>

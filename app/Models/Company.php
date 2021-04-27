@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CustomValue;
 use Illuminate\Support\Facades\DB;
-
+use Yajra\DataTables\Facades\DataTables;
 class Company extends Model
 {
     protected $table = 'custom_fields'; 
