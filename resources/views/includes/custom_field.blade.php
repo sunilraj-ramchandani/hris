@@ -15,7 +15,7 @@
             <div class="form-group mt-4">
               <label>Field Name</label>
               <input type="text" name="field_name" class="mt-2 form-control">
-              <input hidden id = "field_table" name="field_table" class="mt-2 form-control">
+              <input value="" hidden id = "field_table" name="field_table" class="mt-2 form-control">
             </div>
             <div class="form-group mt-4">
               <label>Field Type</label>

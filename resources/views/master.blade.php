@@ -7,16 +7,30 @@
         @else
             <link rel="stylesheet" href="{{ asset('/css/login.css') }}">     
         @endif
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
-        
-        <script src="//code.jquery.com/jquery-1.12.3.js"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/jquery-3.5.1.js') }}"></script>
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/dataTables.bootstrap.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ asset('/css/old-css/bootstrap.min.css') }}">
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/dataTables.buttons.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/css/buttons.bootsrap5.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/jszip.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/pdfmake.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/vfs_fonts.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/buttons.html5.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/buttons.print.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/buttons.colVis.min.js') }}"></script>
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/sidebar.js') }}"></script>
+
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/bootstrap.min.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+        
+        
+        
+        
+        
+        
         <link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/bootstrap-glyphicons.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/buttons.bootstrap5.min.css') }}">
         <script src="https://kit.fontawesome.com/649e71a687.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -27,8 +41,8 @@
         @include('includes.custom_field')
     </body>
     <script>
-        $(".add_custom_field").click(function(){
-            $("#field_table").val($(this).data("table"));
-        });
+    $(".add_custom_field").click(function(){
+        $("#field_table").val($(this).data("table"));
+    });
     </script>
 </html>
