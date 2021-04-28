@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
-                        <button class="btn btn-primary">Add New Company</button>
+                        <button class="submit-company btn btn-primary">Add New Company</button>
                     </div>
                 </div>
                 </form>
