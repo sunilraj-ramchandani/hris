@@ -87,20 +87,22 @@
         $('#tin').prop('required',false);
         $(".modal-dialog").removeClass('modal-xl');
     });
-
-  
      $(".btn-close").click(function(){
         $("[name='name']").val('');
         $("[name='address']").val('');
         $("[name='tin']").val('');
-          $("[name='id']").val('');
+        $("[name='id']").val('');
     });
-
     $('#company').on('hidden.bs.modal', function () {
-    $("[name='name']").val('');
+        $("[name='name']").val('');
         $("[name='address']").val('');
         $("[name='tin']").val('');
-          $("[name='id']").val('');
-})
+        $("[name='id']").val('');
+        $(".formsz").show();
+        $('#name').prop('required',true);
+        $('#address').prop('required',true);
+        $('#tin').prop('required',true);
+        $(".modal-dialog").addClass('modal-xl');
+    })
 </script>
 @endsection
