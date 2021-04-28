@@ -11,19 +11,19 @@
             <form action="{{route('company.add')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
                 <div class = "row">
-                    <div class = "col-12">
+                    <div class = "col-12 formsz">
                         <div class="form-group mt-4">
                             <label>Company Name</label>
-                            <input required type="text" name="name" class="mt-2 form-control">
-                            <input required type="hidden" name="id" class="mt-2 form-control">
+                            <input required type="text" name="name" id="name" class="mt-2 form-control">
+                            <input type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Company Address</label>
-                            <input required type="text" name="address" class="mt-2 form-control">
+                            <input required type="text" name="address" id="address" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Company TIN</label>
-                            <input required type="number" name="tin" class="mt-2 form-control">
+                            <input required type="number" name="tin" id="tin" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
