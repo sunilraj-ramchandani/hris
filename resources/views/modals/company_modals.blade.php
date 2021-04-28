@@ -15,6 +15,7 @@
                         <div class="form-group mt-4">
                             <label>Company Name</label>
                             <input required type="text" name="name" class="mt-2 form-control">
+                            <input required type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Company Address</label>

@@ -20,6 +20,7 @@
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                         <td>N/A</td>
                     @endif
                 @endforeach
+                <td><button data-bs-toggle="modal" data-bs-target="#company" class="company_edit" data-name="{{$cmp->name}}" data-address="{{$cmp->address}}" data-tin="{{$cmp->tin}}"></button></td>
             </tr>
             @endforeach
         </tbody>
@@ -63,6 +65,10 @@
         .appendTo( $('#button_wrapper') );
 } );
 
-
+    $(".company_edit").click(function(){
+        $("[name='name']").val($(this).data("name"));
+        $("[name='address']").val($(this).data("address"));
+        $("[name='tin']").val($(this).data("tin"));
+    });
 </script>
 @endsection
