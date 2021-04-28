@@ -36,7 +36,11 @@
                         <td>N/A</td>
                     @endif
                 @endforeach
-                <td><button data-bs-toggle="modal" data-bs-target="#company" class="company_edit" data-name="{{$cmp->name}}" data-address="{{$cmp->address}}" data-tin="{{$cmp->tin}}"></button></td>
+                <td><button data-bs-toggle="modal" data-bs-target="#company" class="company_edit" data-name="{{$cmp->name}}" data-address="{{$cmp->address}}" data-tin="{{$cmp->tin}}" data-id="{{$cmp->id}}">Edit</button> 
+ 
+                    <button data-bs-toggle="modal"  class="company_delete" data-bs-target="#company"  data-id="{{$cmp->id}}">Delete</button>
+ 
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -69,6 +73,31 @@
         $("[name='name']").val($(this).data("name"));
         $("[name='address']").val($(this).data("address"));
         $("[name='tin']").val($(this).data("tin"));
+        $("[name='id']").val($(this).data("id"));
     });
+
+  $(".company_delete").click(function(){
+        $("[name='id']").val($(this).data("id"));
+          $(".formsz").hide();
+           $(".modal-title").hide();
+           $('#name').prop('required',false);
+           $('#address').prop('required',false);
+           $('#tin').prop('required',false);
+    });
+
+  
+     $(".btn-close").click(function(){
+        $("[name='name']").val('');
+        $("[name='address']").val('');
+        $("[name='tin']").val('');
+          $("[name='id']").val('');
+    });
+
+    $('#company').on('hidden.bs.modal', function () {
+    $("[name='name']").val('');
+        $("[name='address']").val('');
+        $("[name='tin']").val('');
+          $("[name='id']").val('');
+})
 </script>
 @endsection

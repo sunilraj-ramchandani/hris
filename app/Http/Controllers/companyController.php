@@ -33,8 +33,25 @@ class companyController extends Controller
         }
     }
     public function add(Request $request){
-        $insert = DB::insert('insert into hris.company (name,address,created_by,updated_by,tin) values (?,?,?,?,?)', [request('name'), request('address'),Session::get('user'),Session::get('user'),request('tin')]);
-        $error_msg = "Company Created, Login using the new company to finish setup";
-        return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.company (name,address,created_by,updated_by,tin,created_at) values (?,?,?,?,?,?)', [request('name'), request('address'),Session::get('user'),Session::get('user'),request('tin'), $created_date]); 
+            $error_msg = "Company Created, Login using the new company to finish setup";
+            return redirect()->route('login')->with([ 'error_msg' => $error_msg ]);
+        }
+        else{
+            if(request('name')==''){
+                $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.company set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Company Deleted Successfully!";
+              
+                return redirect()->route('company')->with([ 'success_msg' => $success_msg ]);
+            }else{
+                $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.company set name = ? ,address=?,update_at=?,tin=? where id = ?',[request('name'), request('address'),$updated_date,request('tin'),request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('company')->with([ 'success_msg' => $success_msg ]);
+            }
+        }
     }
 }
