@@ -6,6 +6,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\settingsController;
 use App\Http\Controllers\companyController;
 use App\Http\Controllers\customFieldController;
+use App\Http\Controllers\branchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,10 @@ use App\Http\Controllers\customFieldController;
     Route::get('/company', [companyController::class, 'index'])->name('company');
     Route::post('/company', [companyController::class, 'update'])->name('company.post');
     Route::post('/company-add', [companyController::class, 'add'])->name('company.add');
+    //Branch
+    Route::get('/branch', [branchController::class, 'index'])->name('branch');
+    Route::post('/branch', [branchController::class, 'update'])->name('branch.post');
+    Route::post('/branch-add', [branchController::class, 'add'])->name('branch.add');
     
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');

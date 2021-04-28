@@ -31,6 +31,7 @@
                                     <div class="nav__dropdown-content">
                                         <a href="/system-setup" class="nav__dropdown-item">Modules</a>
                                         <a href="/company" class="nav__dropdown-item">Company</a>
+                                        <a href="/branch" class="nav__dropdown-item">Branch</a>
                                         <a href="/department" class="nav__dropdown-item">Department</a>
                                     </div>
                                 </div>

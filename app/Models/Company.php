@@ -25,11 +25,11 @@ class Company extends Model
         
         return $field_collection;
     }
-    public static function getCompanyFieldsValue(){
+    public static function getCompanyFieldsValue($table){
         $company = DB::select('select * from hris.company');
         $field_collection = array();
         foreach($company as $cmp){
-            $fields = CustomField::getFieldsValue('company',$cmp->id);
+            $fields = CustomField::getFieldsValue($table,$cmp->id);
             array_push($field_collection,$fields);
         }
         

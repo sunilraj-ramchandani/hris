@@ -23,7 +23,7 @@ class companyController extends Controller
             }
             $company = Company::getCompany();
             $fields_value = CustomField::getFieldsValue('company');
-            $fields = Company::getCompanyFields();
+            $fields = Company::getCompanyFields('company');
             //dd($fields_value);
             return view('user.company',compact('edit_roles','company','fields_value','fields'));
         }else{
@@ -35,6 +35,6 @@ class companyController extends Controller
     public function add(Request $request){
         $insert = DB::insert('insert into hris.company (name,address,created_by,updated_by,tin) values (?,?,?,?,?)', [request('name'), request('address'),Session::get('user'),Session::get('user'),request('tin')]);
         $error_msg = "Company Created, Login using the new company to finish setup";
-        return redirect()->route('login')->with([ 'error_msg' => $error_msg ]);
+        return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
     }
 }
