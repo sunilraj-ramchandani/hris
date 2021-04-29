@@ -33,4 +33,26 @@ class branchController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
+     public function add(Request $request){
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.branch (name,address,created_by,updated_by,created_at,company) values (?,?,?,?,?,?)', [request('name'), request('address'),Session::get('user'),Session::get('user'), $created_date,Session::get('company')]); 
+            $success_msg = "Bracnh Added Successfully!!!";
+            return redirect()->route('branch')->with([ 'success_msg' => $success_msg ]);
+        }
+        else{
+            if(request('name')==''){
+                $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.branch set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Bracnh Deleted Successfully!";
+              
+                return redirect()->route('branch')->with([ 'success_msg' => $success_msg ]);
+            }else{
+                $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.branch set name = ? ,address=?,updated_at=? where id = ?',[request('name'), request('address'),$updated_date,request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('branch')->with([ 'success_msg' => $success_msg ]);
+            }
+        }
+    }
 }
