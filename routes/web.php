@@ -8,6 +8,7 @@ use App\Http\Controllers\companyController;
 use App\Http\Controllers\customFieldController;
 use App\Http\Controllers\branchController;
 use App\Http\Controllers\minimumWageController;
+use App\Http\Controllers\departmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,12 @@ use App\Http\Controllers\minimumWageController;
     Route::get('/branch', [branchController::class, 'index'])->name('branch');
     Route::post('/branch', [branchController::class, 'update'])->name('branch.post');
     Route::post('/branch-add', [branchController::class, 'add'])->name('branch.add');
+
+    //Department
+    Route::get('/department', [departmentController::class, 'index'])->name('department');
+    Route::post('/department', [departmentController::class, 'update'])->name('department.post');
+    Route::post('/department-add', [departmentController::class, 'add'])->name('department.add');
+
     //Minimum Wage
     Route::get('/minimum-wage', [minimumWageController::class, 'index'])->name('wage');
     Route::post('/minimum-wage', [minimumWageController::class, 'update'])->name('wage.post');

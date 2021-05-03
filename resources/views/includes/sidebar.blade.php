@@ -36,6 +36,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="nav__dropdown">
+                                <a href="/minimum-wage" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Payroll Settings</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/minimum-wage" class="nav__dropdown-item">Minimum Wage</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
 
                             <a href="#" class="nav__link">
                                 <i class='bx bx-message-rounded nav__icon' ></i>
