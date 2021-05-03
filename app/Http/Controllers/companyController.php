@@ -29,7 +29,7 @@ class companyController extends Controller
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";
-            return redirect()->route('login')->with([ 'error_msg' => $error_msg ]);
+            return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
     public function add(Request $request){
