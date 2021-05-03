@@ -63,5 +63,39 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
+        $(".company_edit").click(function(){
+     
+        $("[name='address']").val($(this).data("name"));
+        $("[name='id']").val($(this).data("id"));
+    });
+  $(".btn-close").click(function(){
+
+        $("[name='address']").val('');
+   
+        $("[name='id']").val('');
+    });
+    $('#department').on('hidden.bs.modal', function () {
+      
+        $("[name='address']").val('');
+     
+        $("[name='id']").val('');
+        $(".formsz").show();
+  
+        $('#address').prop('required',true);
+
+        $(".modal-dialog").addClass('modal-xl');
+    })
+    
+  $(".company_delete").click(function(){
+        $('.modal-title').text('Are you sure you want to delete company?');
+        $('.submit-company').text('Yes');
+        $("[name='id']").val($(this).data("id"));
+        $(".formsz").hide();
+        $('#name').prop('required',false);
+        $('#address').prop('required',false);
+        $('#tin').prop('required',false);
+        $(".modal-dialog").removeClass('modal-xl');
+    });
 </script>
+
 @endsection

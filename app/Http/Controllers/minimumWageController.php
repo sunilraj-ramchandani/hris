@@ -26,4 +26,13 @@ class minimumWageController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
+
+    public function add(Request $request){
+ 
+             $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.minimum_wage set price = ? ,region=?,updated_at=? where id = ?',[request('address'), request('name'),$updated_date,request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('wage')->with([ 'success_msg' => $success_msg ]);
+            
+        }
 }

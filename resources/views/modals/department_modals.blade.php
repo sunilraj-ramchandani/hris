@@ -15,6 +15,7 @@
                         <div class="form-group mt-4">
                             <label>Name</label>
                             <input required type="text" name="address" id="address" class="mt-2 form-control">
+                                <input type="text" name="id" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
