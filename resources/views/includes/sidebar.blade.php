@@ -33,6 +33,7 @@
                                         <a href="/company" class="nav__dropdown-item">Company</a>
                                         <a href="/branch" class="nav__dropdown-item">Branch</a>
                                         <a href="/department" class="nav__dropdown-item">Department</a>
+                                        <a href="/cost-center" class="nav__dropdown-item">Cost Centers</a>
                                     </div>
                                 </div>
                             </div>
