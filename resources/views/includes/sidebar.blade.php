@@ -47,6 +47,7 @@
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="/minimum-wage" class="nav__dropdown-item">Minimum Wage</a>
+                                        <a href="/sss" class="nav__dropdown-item">SSS Setup</a>
                                     </div>
                                 </div>
                                 
