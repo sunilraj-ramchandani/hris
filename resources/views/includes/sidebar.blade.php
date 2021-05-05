@@ -48,6 +48,7 @@
                                     <div class="nav__dropdown-content">
                                         <a href="/minimum-wage" class="nav__dropdown-item">Minimum Wage</a>
                                         <a href="/sss" class="nav__dropdown-item">SSS Setup</a>
+                                        <a href="/philhealth" class="nav__dropdown-item">Philhealth Setup</a>
                                     </div>
                                 </div>
                                 

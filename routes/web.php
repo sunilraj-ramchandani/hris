@@ -11,6 +11,7 @@ use App\Http\Controllers\minimumWageController;
 use App\Http\Controllers\departmentController;
 use App\Http\Controllers\costCenterController;
 use App\Http\Controllers\sssController;
+use App\Http\Controllers\philhealthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +48,11 @@ use App\Http\Controllers\sssController;
     Route::get('/sss', [sssController::class, 'index'])->name('sss');
     Route::post('/sss', [sssController::class, 'update'])->name('sss.post');
     Route::post('/sss-add', [sssController::class, 'add'])->name('sss.add');
+
+    //philhealth
+    Route::get('/philhealth', [philhealthController::class, 'index'])->name('philhealth');
+    Route::post('/philhealth', [philhealthController::class, 'update'])->name('philhealth.post');
+    Route::post('/philhealth-add', [philhealthController::class, 'add'])->name('philhealth.add');
     
     //Cost Centers
     Route::get('/cost-center', [costCenterController::class, 'index'])->name('cost');
