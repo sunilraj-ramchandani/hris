@@ -13,12 +13,12 @@
                 <div class = "row">
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
-                            <label>Salary From</label>
+                            <label>Salary Range (From)</label>
                             <input required type="number" name="price_min" id="price_min" class="mt-2 form-control">
                             <input type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
-                            <label>Salary To</label>
+                            <label>Salary Range (To)</label>
                             <input required type="number" name="price_max" id="price_max" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">

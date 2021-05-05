@@ -55,10 +55,13 @@ use App\Http\Controllers\taxController;
     Route::post('/philhealth', [philhealthController::class, 'update'])->name('philhealth.post');
     Route::post('/philhealth-add', [philhealthController::class, 'add'])->name('philhealth.add');
 
-    //tax
+    //tax classification and rate
     Route::get('/tax', [taxController::class, 'index'])->name('tax');
     Route::post('/tax', [taxController::class, 'update'])->name('tax.post');
     Route::post('/tax-add', [taxController::class, 'add'])->name('tax.add');
+    Route::get('/tax-rate', [taxController::class, 'index_rate'])->name('tax-rate');
+    Route::post('/tax-rate', [taxController::class, 'update_rate'])->name('tax-rate.post');
+    Route::post('/tax-rate-add', [taxController::class, 'add_rate'])->name('tax-rate.add');
     
     //Cost Centers
     Route::get('/cost-center', [costCenterController::class, 'index'])->name('cost');

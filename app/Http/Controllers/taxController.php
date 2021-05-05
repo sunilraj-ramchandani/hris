@@ -29,4 +29,22 @@ class taxController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
+    public function index_rate(){
+        if(User::hasRole('tax-edit') || User::hasRole('tax-edit-view') ){
+            if(User::hasRole('tax-edit-edit')){
+                $edit_roles = "edit";
+            }else{
+                $edit_roles = "view";
+            }
+            $tax_rate = Universal::selectTableJoin('tax_classifications','tax_rate',['name','description','b.id','price_min','price_max','rate']);
+            $tax_classifications = Universal::selectTable('tax_classifications');
+            $fields_value = CustomField::getFieldsValue('tax_rate');
+            $fields = Company::getCompanyFields('tax_rate');
+            return view('user.tax-rate',compact('edit_roles','tax_rate','tax_classifications','fields_value','fields'));
+        }else{
+            Session::flush();
+            $error_msg = "You are not allowed to access that module, you will now be signed out";
+            return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
+        }
+    }
 }
