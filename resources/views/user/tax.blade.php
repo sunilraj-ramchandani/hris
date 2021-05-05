@@ -2,7 +2,7 @@
 @section('title', 'System Setup')
 
 @section('content')
-@include('modals.philhealth_modals')
+@include('modals.tax_classification_modals')
 @include('includes.custom_field_view')
 <div class="container-fluid pt-4 mt-4">
     @if (Session::has('success_msg'))
@@ -11,13 +11,11 @@
         </div>
     @endif
     <div id="button_wrapper" class="small-6 columns pt-4 mt-4 mb-4"></div>
-    <table class="table table-bordered" id="philhealth-table">
+    <table class="table table-bordered" id="tax-table">
         <thead>
             <tr>
-                <th>From</th>
-                <th>To</th>
-                <th>Fixed or Percent</th>
-                <th>Premium Rate</th>
+                <th>Name</th>
+                <th>Description</th>
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
@@ -25,22 +23,20 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($philhealth as $phealth)
+            @foreach($tax_classifications as $tax)
             <tr>
-                <td>{{$phealth->price_min}}</td>
-                <td>{{$phealth->price_max}}</td>
-                <td>{{$phealth->method}}</td>
-                <td>{{$phealth->rate}}</td>
+                <td>{{$tax->name}}</td>
+                <td>{{$tax->description}}</td>
                 @foreach($fields_value as $val)
-                    @if($val->company_id == $phealth->id)
+                    @if($val->company_id == $tax->id)
                         <td>{{$val->custom_value}}</td>
                     @else
                         <td>N/A</td>
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#phealth" class="company_edit" data-name="{{$phealth->name}}" data-id="{{$phealth->id}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#phealth"  data-id="{{$phealth->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#tax" class="company_edit" data-name="{{$tax->name}}" data-desc="{{$tax->description}}" data-id="{{$tax->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#tax"  data-id="{{$tax->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -51,8 +47,8 @@
     @if($edit_roles == "edit")
     <div class = "row pt-4 mt-4">
         <div class = "col-12 text-right">
-            <button type="button" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#phealth" style="color:white">Add New Philhealth</button>
-            <button type="button" class = "btn btn-warning add_custom_field" data-bs-toggle="modal"  data-table="philhealth" data-bs-target="#custom_field">Add Custom Field</button>
+            <button type="button" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#tax" style="color:white">Add Tax Classification</button>
+            <button type="button" class = "btn btn-warning add_custom_field" data-bs-toggle="modal"  data-table="tax_classification" data-bs-target="#custom_field">Add Custom Field</button>
         </div>
     </div>
 
@@ -61,7 +57,7 @@
 
 <script>
   $(document).ready(function() {
-    var table = $('#philhealth-table').DataTable( {
+    var table = $('#tax-table').DataTable( {
         lengthChange: true,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
     } );

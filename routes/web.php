@@ -12,6 +12,7 @@ use App\Http\Controllers\departmentController;
 use App\Http\Controllers\costCenterController;
 use App\Http\Controllers\sssController;
 use App\Http\Controllers\philhealthController;
+use App\Http\Controllers\taxController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +54,11 @@ use App\Http\Controllers\philhealthController;
     Route::get('/philhealth', [philhealthController::class, 'index'])->name('philhealth');
     Route::post('/philhealth', [philhealthController::class, 'update'])->name('philhealth.post');
     Route::post('/philhealth-add', [philhealthController::class, 'add'])->name('philhealth.add');
+
+    //tax
+    Route::get('/tax', [taxController::class, 'index'])->name('tax');
+    Route::post('/tax', [taxController::class, 'update'])->name('tax.post');
+    Route::post('/tax-add', [taxController::class, 'add'])->name('tax.add');
     
     //Cost Centers
     Route::get('/cost-center', [costCenterController::class, 'index'])->name('cost');
