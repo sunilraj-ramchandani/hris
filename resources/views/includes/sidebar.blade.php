@@ -82,6 +82,8 @@
                                     <div class="nav__dropdown-content">
                                         <a href="/employee-status" class="nav__dropdown-item">Employee Status</a>
                                         <a href="/employee-position" class="nav__dropdown-item">Employee Position</a>
+                                        <a href="/allowance" class="nav__dropdown-item">Allowance</a>
+                                        <a href="/loan" class="nav__dropdown-item">Loan</a>
                                     </div>
                                 </div>
                             </div>

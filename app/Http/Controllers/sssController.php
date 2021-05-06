@@ -22,7 +22,7 @@ class sssController extends Controller
             $sss = Universal::selectTable('sss');
             $fields_value = CustomField::getFieldsValue('sss');
             $fields = Company::getCompanyFields('sss');
-            return view('user.sss',compact('edit_roles','sss','fields_value','fields'));
+            return view('user.settings.sss',compact('edit_roles','sss','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

@@ -22,7 +22,7 @@ class pagibigController extends Controller
             $pagibig = Universal::selectTable('pagibig');
             $fields_value = CustomField::getFieldsValue('pagibig');
             $fields = Company::getCompanyFields('pagibig');
-            return view('user.pagibig',compact('edit_roles','pagibig','fields_value','fields'));
+            return view('user.settings.pagibig',compact('edit_roles','pagibig','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

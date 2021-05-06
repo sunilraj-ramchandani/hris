@@ -10,19 +10,19 @@ use App\Models\Company;
 use Illuminate\Support\Facades\DB;
 use Session;
 
-class philhealthController extends Controller
+class allowanceController extends Controller
 {
     public function index(){
-        if(User::hasRole('philhealth-edit') || User::hasRole('philhealth-edit-view') ){
-            if(User::hasRole('philhealth-edit-edit')){
+        if(User::hasRole('allowance-edit') || User::hasRole('allowance-view') ){
+            if(User::hasRole('allowance-edit')){
                 $edit_roles = "edit";
             }else{
                 $edit_roles = "view";
             }
-            $philhealth = Universal::selectTable('philhealth');
-            $fields_value = CustomField::getFieldsValue('philhealth');
-            $fields = Company::getCompanyFields('philhealth');
-            return view('user.settings.philhealth',compact('edit_roles','philhealth','fields_value','fields'));
+            $allowance = Universal::selectTable('allowance');
+            $fields_value = CustomField::getFieldsValue('allowance');
+            $fields = Company::getCompanyFields('allowance');
+            return view('user.settings.allowance',compact('edit_roles','allowance','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

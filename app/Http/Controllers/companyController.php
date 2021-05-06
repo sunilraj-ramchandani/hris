@@ -25,7 +25,7 @@ class companyController extends Controller
             $fields_value = CustomField::getFieldsValue('company');
             $fields = Company::getCompanyFields('company');
             //dd($fields_value);
-            return view('user.company',compact('edit_roles','company','fields_value','fields'));
+            return view('user.settings.company',compact('edit_roles','company','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

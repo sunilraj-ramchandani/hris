@@ -22,7 +22,7 @@ class taxController extends Controller
             $tax_classifications = Universal::selectTable('tax_classifications');
             $fields_value = CustomField::getFieldsValue('tax_classifications');
             $fields = Company::getCompanyFields('tax_classifications');
-            return view('user.tax',compact('edit_roles','tax_classifications','fields_value','fields'));
+            return view('user.settings.tax',compact('edit_roles','tax_classifications','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";
@@ -40,7 +40,7 @@ class taxController extends Controller
             $tax_classifications = Universal::selectTable('tax_classifications');
             $fields_value = CustomField::getFieldsValue('tax_rate');
             $fields = Company::getCompanyFields('tax_rate');
-            return view('user.tax-rate',compact('edit_roles','tax_rate','tax_classifications','fields_value','fields'));
+            return view('user.settings.tax-rate',compact('edit_roles','tax_rate','tax_classifications','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

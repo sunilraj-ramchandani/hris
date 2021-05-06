@@ -26,7 +26,7 @@ class branchController extends Controller
             $fields_value = CustomField::getFieldsValue('branch');
             $fields = Company::getCompanyFields('branch');
             //dd($fields_value);
-            return view('user.branch',compact('edit_roles','branch','fields_value','fields'));
+            return view('user.settings.branch',compact('edit_roles','branch','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

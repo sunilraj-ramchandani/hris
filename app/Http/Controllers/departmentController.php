@@ -22,7 +22,7 @@ class departmentController extends Controller
             $department = Universal::selectTable('department');
             $fields_value = CustomField::getFieldsValue('department');
             $fields = Company::getCompanyFields('department');
-            return view('user.department',compact('edit_roles','department','fields_value','fields'));
+            return view('user.settings.department',compact('edit_roles','department','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

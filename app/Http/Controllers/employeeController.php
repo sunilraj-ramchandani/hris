@@ -22,7 +22,7 @@ class employeeController extends Controller
             $employee = Universal::selectTable('employee');
             $fields_value = CustomField::getFieldsValue('employee');
             $fields = Company::getCompanyFields('employee');
-            return view('user.employee',compact('edit_roles','employee','fields_value','fields'));
+            return view('user.settings.employee',compact('edit_roles','employee','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";
@@ -39,7 +39,7 @@ class employeeController extends Controller
             $employee_status = Universal::selectTable('employee_status');
             $fields_value = CustomField::getFieldsValue('employee_status');
             $fields = Company::getCompanyFields('employee_status');
-            return view('user.employee-status',compact('edit_roles','employee_status','fields_value','fields'));
+            return view('user.settings.employee-status',compact('edit_roles','employee_status','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";
@@ -56,7 +56,7 @@ class employeeController extends Controller
             $employee_position = Universal::selectTable('employee_position');
             $fields_value = CustomField::getFieldsValue('employee_position');
             $fields = Company::getCompanyFields('employee_position');
-            return view('user.employee-position',compact('edit_roles','employee_position','fields_value','fields'));
+            return view('user.settings.employee-position',compact('edit_roles','employee_position','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

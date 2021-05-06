@@ -20,7 +20,7 @@ class settingsController extends Controller
             }else{
                 $edit_roles = "view";
             }
-            return view('user.settings',compact('setups','edit_roles'));
+            return view('user.settings.settings',compact('setups','edit_roles'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

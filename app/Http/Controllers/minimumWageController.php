@@ -19,7 +19,7 @@ class minimumWageController extends Controller
                 $edit_roles = "view";
             }
             $wage = Universal::selectTable('minimum_wage');
-            return view('user.wage',compact('edit_roles','wage'));
+            return view('user.settings.wage',compact('edit_roles','wage'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

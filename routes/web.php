@@ -16,6 +16,7 @@ use App\Http\Controllers\taxController;
 use App\Http\Controllers\pagibigController;
 use App\Http\Controllers\holidayController;
 use App\Http\Controllers\employeeController;
+use App\Http\Controllers\allowanceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,6 +105,11 @@ use App\Http\Controllers\employeeController;
     Route::get('/employee-position', [employeeController::class, 'index_position'])->name('employee-position');
     Route::post('/employee-position', [employeeController::class, 'update_position'])->name('employee-position.post');
     Route::post('/employee-position-add', [employeeController::class, 'add_position'])->name('employee-position.add');
+
+    //Allowance
+    Route::get('/allowance', [allowanceController::class, 'index'])->name('allowance');
+    Route::post('/allowance', [allowanceController::class, 'update'])->name('allowance.post');
+    Route::post('/allowance-add', [allowanceController::class, 'add'])->name('allowance.add');
 
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');

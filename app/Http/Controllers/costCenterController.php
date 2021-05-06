@@ -22,7 +22,7 @@ class costCenterController extends Controller
             $cost = Universal::selectTable('cost_centers');
             $fields_value = CustomField::getFieldsValue('cost_centers');
             $fields = Company::getCompanyFields('cost_centers');
-            return view('user.cost-centers',compact('edit_roles','cost','fields_value','fields'));
+            return view('user.settings.cost-centers',compact('edit_roles','cost','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";
