@@ -65,5 +65,45 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
+  $(".company_edit").click(function(){
+     
+        $("[name='name']").val($(this).data("name"));
+
+        $("[name='desc']").val($(this).data("desc"));
+        $("[name='id']").val($(this).data("id"));
+    });
+  $(".btn-close").click(function(){
+
+        $("[name='name']").val('');
+   
+        $("[name='id']").val('');
+
+        $("[name='desc']").val('');
+    });
+    $('#cost_centers').on('hidden.bs.modal', function () {
+      
+        $("[name='address']").val('');
+     
+        $("[name='id']").val('');;
+     
+        $("[name='desc']").val('');
+        $(".formsz").show();
+  
+        $('#name').prop('required',true);
+        $('#desc').prop('required',true);
+
+        $(".modal-dialog").addClass('modal-xl');
+    })
+    
+  $(".company_delete").click(function(){
+        $('.modal-title').text('Are you sure you want to delete company?');
+        $('.submit-company').text('Yes');
+        $("[name='id']").val($(this).data("id"));
+        $(".formsz").hide();
+        $('#name').prop('required',false);
+        $('#address').prop('required',false);
+        $('#desc').prop('required',false);
+        $(".modal-dialog").removeClass('modal-xl');
+    });
 </script>
 @endsection

@@ -47,4 +47,26 @@ class taxController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
+     public function add(Request $request){
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.tax_classifications (name,description,created_by,created_at,company_id) values (?,?,?,?,?)',[request('name'),request('desc'),Session::get('user'),$created_date,Session::get('id')]); 
+             $success_msg="Added Successfully!";
+                return redirect()->route('tax')->with([ 'success_msg' => $success_msg ]);
+        }else{
+             if(request('name')==''){
+                  $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.tax_classifications set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Company Deleted Successfully!";
+                
+                return redirect()->route('tax')->with([ 'success_msg' => $success_msg ]);
+             }
+             else{
+                  $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.tax_classifications set name=?,description=?,updated_at=?,updated_by=? where id = ?',[request('name'),request('desc'),$updated_date,Session::get('user'),request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('tax')->with([ 'success_msg' => $success_msg ]);
+             }
+        } 
+    }
 }
