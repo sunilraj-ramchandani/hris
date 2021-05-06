@@ -17,7 +17,6 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Taxable?</th>
-                <th>Interest Rate</th>
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
@@ -34,7 +33,6 @@
                 @else
                 <td>No</td>
                 @endif
-                <td>{{$all->interest}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $all->id)
                         <td>{{$val->custom_value}}</td>
@@ -43,7 +41,7 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#allowance" class="company_edit" data-name="{{$all->name}}" data-id="{{$all->id}}"  data-tax="{{$all->taxable}}" data-interest="{{$all->interest}}"><i class="fa fa-edit"></i></button> 
+                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#allowance" class="company_edit" data-name="{{$all->name}}" data-id="{{$all->id}}"  data-tax="{{$all->taxable}}"><i class="fa fa-edit"></i></button> 
                     <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#allowance"  data-id="{{$phealth->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>

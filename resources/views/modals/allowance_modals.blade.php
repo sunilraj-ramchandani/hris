@@ -22,10 +22,6 @@
                             <textarea name="desc" id="desc" class="mt-2 form-control"> </textarea>
                         </div>
                         <div class="form-group mt-4">
-                            <label>Interest</label>
-                            <input type="number" name="interest" id="interest" class="mt-2 form-control">
-                        </div>
-                        <div class="form-group mt-4">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" value="taxable" id="taxable">
                                 <label class="form-check-label" for="taxable">
