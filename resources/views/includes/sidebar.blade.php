@@ -26,7 +26,6 @@
                                     <span class="nav__name">System Settings</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
-
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="/system-setup" class="nav__dropdown-item">Modules</a>
@@ -43,18 +42,40 @@
                                     <span class="nav__name">Payroll Settings</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
-
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="/minimum-wage" class="nav__dropdown-item">Minimum Wage</a>
                                         <a href="/sss" class="nav__dropdown-item">SSS/GSIS Setup</a>
                                         <a href="/philhealth" class="nav__dropdown-item">Philhealth Setup</a>
                                         <a href="/pagibig" class="nav__dropdown-item">Pag-IBIG Setup</a>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="nav__dropdown">
+                                <a href="/tax" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Tax Settings</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
                                         <a href="/tax" class="nav__dropdown-item">Tax Classification</a>
                                         <a href="/tax-rate" class="nav__dropdown-item">Tax Rates</a>
                                     </div>
                                 </div>
-                                
+                            </div>
+                            <div class="nav__dropdown">
+                                <a href="/holiday" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Holiday Settings</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/holiday" class="nav__dropdown-item">Holiday Classification</a>
+                                        <a href="/holiday-date" class="nav__dropdown-item">Holiday Dates</a>
+                                    </div>
+                                </div>
                             </div>
 
                             <a href="#" class="nav__link">

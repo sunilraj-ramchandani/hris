@@ -16,7 +16,7 @@ class Universal extends Model
         return $var_table;
     }
     public static function selectTableJoin($table, $table2,$fields){
-        $select = 'select '.implode ( ',' , $fields).' from hris.'.$table . ' as A join hris.'.$table2 .' as B on A.id = B.classification_id where A.deleted_at is null and A.company_id ='.Session::get('company');
+        $select = 'select '.implode ( ',' , $fields).' from hris.'.$table . ' as A join hris.'.$table2 .' as B on A.id = B.'.$table . '_id where A.deleted_at is null and A.company_id ='.Session::get('company');
         $var_table = DB::select($select);
         return $var_table;
     }
