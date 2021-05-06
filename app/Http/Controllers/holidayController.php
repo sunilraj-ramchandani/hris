@@ -47,4 +47,26 @@ class holidayController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
+   public function add(Request $request){
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.holiday (name,description,rate,created_by,created_at,company_id) values (?,?,?,?,?,?)',[request('name'),request('desc'),request('rate'),Session::get('user'),$created_date,Session::get('id')]); 
+             $success_msg="Added Successfully!";
+                return redirect()->route('holiday')->with([ 'success_msg' => $success_msg ]);
+        }else{
+             if(request('name')==''){
+                  $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.hris.holiday set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Company Deleted Successfully!";
+                
+                return redirect()->route('holiday')->with([ 'success_msg' => $success_msg ]);
+             }
+             else{
+                  $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.hris.holiday set name=?,description=?,rate=?,updated_at=?,updated_by=? where id = ?',[request('name'),request('desc'),request('rate'),$updated_date,Session::get('user'),request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('holiday')->with([ 'success_msg' => $success_msg ]);
+             }
+        } 
+    }
 }
