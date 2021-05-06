@@ -14,32 +14,35 @@
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
                             <label>Salary Range (From)</label>
-                            <input required type="number" name="price_min" id="price_min" class="mt-2 form-control">
+                            <input required type="number" name="price_min" id="price_min" class="mt-2 form-control" onkeyup="verify()">
                             <input type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (To)</label>
                             <input required type="number" name="price_max" id="price_max" class="mt-2 form-control">
+                           <p id="errr" style="display: none;">Price max must higher on price min!!!</p>
                         </div>
                         <div class="form-group mt-4">
                             <label>Employee Contribution</label>
-                            <input required type="number" name="ee_contribution" id="ee_contribution" class="mt-2 form-control">
+                            <input required type="number" name="ee_contribution" id="ee_contribution"  onkeyup="verify2()" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Employer Contribution</label>
-                            <input required type="number" name="er_contribution" id="er_contribution" class="mt-2 form-control">
+                            <input required type="number" name="er_contribution" id="er_contribution" onkeyup="verify2()" class="mt-2 form-control">
+                            <p id="errrr" style="display: none;">Must higher than first employee contribution!</p>
                         </div>
                         <div class="form-group mt-4">
                             <label>Employee Compensation</label>
-                            <input required type="number" name="ee_compensation" id="ee_compensation" class="mt-2 form-control">
+                            <input required type="number" name="ee_compensation" id="ee_compensation"  onkeyup="verify3()" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Employer Compensation</label>
-                            <input required type="number" name="er_compesation" id="er_compesation" class="mt-2 form-control">
+                            <input required type="number" name="er_compensation" id="er_compensation"  onkeyup="verify3()" class="mt-2 form-control">
+                             <p id="errrrr" style="display: none;">Must higher than first employee compensation!</p>
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
-                        <button class="submit-company btn btn-primary">Save</button>
+                        <button class="submit-company btn btn-primary" id="submitszxc">Save</button>
                     </div>
                 </div>
                 </form>
@@ -47,3 +50,4 @@
         </div>
     </div>
 </div>
+
