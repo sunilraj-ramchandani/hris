@@ -17,6 +17,7 @@ use App\Http\Controllers\pagibigController;
 use App\Http\Controllers\holidayController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\allowanceController;
+use App\Http\Controllers\loanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -110,6 +111,11 @@ use App\Http\Controllers\allowanceController;
     Route::get('/allowance', [allowanceController::class, 'index'])->name('allowance');
     Route::post('/allowance', [allowanceController::class, 'update'])->name('allowance.post');
     Route::post('/allowance-add', [allowanceController::class, 'add'])->name('allowance.add');
+
+    //Loans
+    Route::get('/loan', [loanController::class, 'index'])->name('loan');
+    Route::post('/loan', [loanController::class, 'update'])->name('loan.post');
+    Route::post('/loan-add', [loanController::class, 'add'])->name('loan.add');
 
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');
