@@ -13,6 +13,7 @@ use App\Http\Controllers\costCenterController;
 use App\Http\Controllers\sssController;
 use App\Http\Controllers\philhealthController;
 use App\Http\Controllers\taxController;
+use App\Http\Controllers\pagibigController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +55,11 @@ use App\Http\Controllers\taxController;
     Route::get('/philhealth', [philhealthController::class, 'index'])->name('philhealth');
     Route::post('/philhealth', [philhealthController::class, 'update'])->name('philhealth.post');
     Route::post('/philhealth-add', [philhealthController::class, 'add'])->name('philhealth.add');
+
+    //pagibig
+    Route::get('/pagibig', [pagibigController::class, 'index'])->name('pagibig');
+    Route::post('/pagibig', [pagibigController::class, 'update'])->name('pagibig.post');
+    Route::post('/pagibig-add', [pagibigController::class, 'add'])->name('pagibig.add');
 
     //tax classification and rate
     Route::get('/tax', [taxController::class, 'index'])->name('tax');

@@ -47,21 +47,11 @@
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="/minimum-wage" class="nav__dropdown-item">Minimum Wage</a>
-                                        <a href="/sss" class="nav__dropdown-item">SSS Setup</a>
+                                        <a href="/sss" class="nav__dropdown-item">SSS/GSIS Setup</a>
                                         <a href="/philhealth" class="nav__dropdown-item">Philhealth Setup</a>
-                                        <div class="nav__dropdown">
-                                            <a href="/tax" class="nav__link">
-                                                <i class='bx bx-user nav__icon' ></i>
-                                                <span class="nav__name">Tax</span>
-                                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
-                                            </a>
-                                            <div class="nav__dropdown-collapse">
-                                                <div class="nav__dropdown-content">
-                                                    <a href="/tax" class="nav__dropdown-item">Tax Classification</a>
-                                                    <a href="/tax-rate" class="nav__dropdown-item">Tax Rates</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a href="/pagibig" class="nav__dropdown-item">Pag-IBIG Setup</a>
+                                        <a href="/tax" class="nav__dropdown-item">Tax Classification</a>
+                                        <a href="/tax-rate" class="nav__dropdown-item">Tax Rates</a>
                                     </div>
                                 </div>
                                 
