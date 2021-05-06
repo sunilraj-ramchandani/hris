@@ -79,6 +79,36 @@
                     </label>
                 </div>
             </div> 
+            <div class = "col-2 mt-2">
+                <label>Philhealth Deduction (Charge on Basic Pay)</label>
+                <div class="onoffswitch mt-2">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="phil-deduct" tabindex="0">
+                    <label class="onoffswitch-label" for="phil-deduct">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>
+            <div class = "col-2 mt-2">
+                <label>SSS Deduction (Charge on Basic Pay)</label>
+                <div class="onoffswitch mt-2">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="sss-deduct" tabindex="0">
+                    <label class="onoffswitch-label" for="sss-deduct">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div> 
+            <div class = "col-2 mt-2">
+                <label>Tax Deduction (Charge on Basic Pay)</label>
+                <div class="onoffswitch mt-2">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="tax-deduct" tabindex="0">
+                    <label class="onoffswitch-label" for="tax-deduct">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div> 
         </div>
         @if($edit_roles == "edit")
         <div class = "d-none text-center col-11 mt-4" id = "submit">

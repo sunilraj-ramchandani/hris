@@ -47,6 +47,11 @@
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="/minimum-wage" class="nav__dropdown-item">Minimum Wage</a>
+                                        <a href="/sss" class="nav__dropdown-item">SSS/GSIS Setup</a>
+                                        <a href="/philhealth" class="nav__dropdown-item">Philhealth Setup</a>
+                                        <a href="/pagibig" class="nav__dropdown-item">Pag-IBIG Setup</a>
+                                        <a href="/tax" class="nav__dropdown-item">Tax Classification</a>
+                                        <a href="/tax-rate" class="nav__dropdown-item">Tax Rates</a>
                                     </div>
                                 </div>
                                 
