@@ -29,4 +29,26 @@ class costCenterController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
+     public function add(Request $request){
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.cost_centers (name,description,created_by,created_at,company_id) values (?,?,?,?,?)',[request('address'),request('desc'),Session::get('user'),$created_date,Session::get('id')]); 
+             $success_msg="Added Successfully!";
+                return redirect()->route('cost')->with([ 'success_msg' => $success_msg ]);
+        }else{
+             if(request('address')==''){
+                  $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.cost_centers set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Company Deleted Successfully!";
+                
+                return redirect()->route('cost')->with([ 'success_msg' => $success_msg ]);
+             }
+             else{
+                  $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.cost_centers set name = ? ,description= ? ,update_at=?,update_by=? where id = ?',[request('address'),request('desc'), $updated_date,Session::get('user'),request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('cost')->with([ 'success_msg' => $success_msg ]);
+             }
+        } 
+    }
 }
