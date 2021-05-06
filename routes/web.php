@@ -14,6 +14,7 @@ use App\Http\Controllers\sssController;
 use App\Http\Controllers\philhealthController;
 use App\Http\Controllers\taxController;
 use App\Http\Controllers\pagibigController;
+use App\Http\Controllers\holidayController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,6 +46,16 @@ use App\Http\Controllers\pagibigController;
     Route::get('/department', [departmentController::class, 'index'])->name('department');
     Route::post('/department', [departmentController::class, 'update'])->name('department.post');
     Route::post('/department-add', [departmentController::class, 'add'])->name('department.add');
+     
+    //Cost Centers
+    Route::get('/cost-center', [costCenterController::class, 'index'])->name('cost');
+    Route::post('/cost-center', [costCenterController::class, 'update'])->name('cost.post');
+    Route::post('/cost-center-add', [costCenterController::class, 'add'])->name('cost.add');
+ 
+    //Minimum Wage
+    Route::get('/minimum-wage', [minimumWageController::class, 'index'])->name('wage');
+    Route::post('/minimum-wage', [minimumWageController::class, 'update'])->name('wage.post');
+    Route::post('/minimum-wage-add', [minimumWageController::class, 'add'])->name('wage.add');
     
     //SSS
     Route::get('/sss', [sssController::class, 'index'])->name('sss');
@@ -68,16 +79,14 @@ use App\Http\Controllers\pagibigController;
     Route::get('/tax-rate', [taxController::class, 'index_rate'])->name('tax-rate');
     Route::post('/tax-rate', [taxController::class, 'update_rate'])->name('tax-rate.post');
     Route::post('/tax-rate-add', [taxController::class, 'add_rate'])->name('tax-rate.add');
-    
-    //Cost Centers
-    Route::get('/cost-center', [costCenterController::class, 'index'])->name('cost');
-    Route::post('/cost-center', [costCenterController::class, 'update'])->name('cost.post');
-    Route::post('/cost-center-add', [costCenterController::class, 'add'])->name('cost.add');
 
-    //Minimum Wage
-    Route::get('/minimum-wage', [minimumWageController::class, 'index'])->name('wage');
-    Route::post('/minimum-wage', [minimumWageController::class, 'update'])->name('wage.post');
-    Route::post('/minimum-wage-add', [minimumWageController::class, 'add'])->name('wage.add');
+    //Holiday classification and rate
+    Route::get('/holiday', [holidayController::class, 'index'])->name('holiday');
+    Route::post('/holiday', [holidayController::class, 'update'])->name('holiday.post');
+    Route::post('/holiday-add', [holidayController::class, 'add'])->name('holiday.add');
+    Route::get('/holiday-date', [holidayController::class, 'index_date'])->name('holiday-date');
+    Route::post('/holiday-date', [holidayController::class, 'update_date'])->name('holiday-date.post');
+    Route::post('/holiday-date-add', [holidayController::class, 'add_date'])->name('holiday-date.add');
     
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');
