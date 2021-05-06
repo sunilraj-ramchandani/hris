@@ -12,11 +12,6 @@
         <div class="nav" id="navbar">
             <nav class="nav__container">
                 <div>
-                    <a href="/" class="nav__link nav__logo">
-                        <i class='bx bxs-disc nav__icon' ></i>
-                        <span class="nav__logo-name">HRIS</span>
-                    </a>
-    
                     <div class="nav__list">
                         <div class="nav__items">
                             <h3 class="nav__subtitle">Settings</h3> 
@@ -77,6 +72,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="nav__dropdown">
+                                <a href="/holiday" class="nav__link">
+                                    <i class='bx bx-user nav__icon' ></i>
+                                    <span class="nav__name">Employee Settings</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/employee-status" class="nav__dropdown-item">Employee Status</a>
+                                        <a href="/employee-position" class="nav__dropdown-item">Employee Position</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
     
                         <div class="nav__items">
@@ -88,16 +96,13 @@
                                     <span class="nav__name">Employees</span>
                                     <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
                                 </a>
-
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
                                         <a href="/employee" class="nav__dropdown-item">Employee Profile</a>
-                                        <a href="/employee-status" class="nav__dropdown-item">Employee Status</a>
-                                        <a href="/employee-position" class="nav__dropdown-item">Employee Position</a>
-                                        <a href="#" class="nav__dropdown-item">Program</a>
+                                        <a href="/employee-allowance" class="nav__dropdown-item">Employee Allowance</a>
+                                        <a href="/employee-loan" class="nav__dropdown-item">Employee Loan</a>
                                     </div>
                                 </div>
-
                             </div>
                             <a href="#" class="nav__link">
                                 <i class='bx bx-message-rounded nav__icon' ></i>
