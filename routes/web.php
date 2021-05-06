@@ -15,6 +15,7 @@ use App\Http\Controllers\philhealthController;
 use App\Http\Controllers\taxController;
 use App\Http\Controllers\pagibigController;
 use App\Http\Controllers\holidayController;
+use App\Http\Controllers\employeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,6 +89,22 @@ use App\Http\Controllers\holidayController;
     Route::post('/holiday-date', [holidayController::class, 'update_date'])->name('holiday-date.post');
     Route::post('/holiday-date-add', [holidayController::class, 'add_date'])->name('holiday-date.add');
     
+
+    //Employee Profile
+    Route::get('/employee', [employeeController::class, 'index'])->name('employee');
+    Route::post('/employee', [employeeController::class, 'update'])->name('employee.post');
+    Route::post('/employee-add', [employeeController::class, 'add'])->name('employee.add');
+
+    //Employee Status
+    Route::get('/employee-status', [employeeController::class, 'index_status'])->name('employee-status');
+    Route::post('/employee-status', [employeeController::class, 'update_status'])->name('employee-status.post');
+    Route::post('/employee-status-add', [employeeController::class, 'add_status'])->name('employee-status.add');
+
+    //Employee Positions
+    Route::get('/employee-position', [employeeController::class, 'index_position'])->name('employee-position');
+    Route::post('/employee-position', [employeeController::class, 'update_position'])->name('employee-position.post');
+    Route::post('/employee-position-add', [employeeController::class, 'add_position'])->name('employee-position.add');
+
     //LOGIN
     Route::get('/login', [loginController::class, 'index'])->name('login.get');
     Route::post('/login', [loginController::class, 'view'])->name('login');  
