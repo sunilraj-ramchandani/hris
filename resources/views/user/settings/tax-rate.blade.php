@@ -41,7 +41,7 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#tax-rate" class="company_edit" data-name="{{$tax->name}}" data-desc="{{$tax->description}}" data-id="{{$tax->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#tax-rate" class="company_edit" data-name="{{$tax->name}}" data-price_min="{{$tax->price_min}}" data-price_max="{{$tax->price_max}}" data-desc="{{$tax->description}}" data-id="{{$tax->id}}"><i class="fa fa-edit"></i></button> 
                     <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#tax-rate"  data-id="{{$tax->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>

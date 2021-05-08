@@ -27,6 +27,7 @@
                         <div class="form-group mt-4">
                             <label>Employer Rate (%)</label>
                             <input type="number" name="er_rate" id="er_rate" class="mt-2 form-control">
+                            <input type="hidden" name="id" id="id" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
