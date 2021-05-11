@@ -19,10 +19,15 @@ class employeeController extends Controller
             }else{
                 $edit_roles = "view";
             }
-            $employee = Universal::selectTable('employee');
-            $fields_value = CustomField::getFieldsValue('employee');
-            $fields = Company::getCompanyFields('employee');
-            return view('user.settings.employee',compact('edit_roles','employee','fields_value','fields'));
+            $employee = Universal::getEmployeeProfile();
+            $department = Universal::selectTable('department');
+            $branch = Universal::selectTable('branch');
+            $cost_centers = Universal::selectTable('cost_centers');
+            $employee_position = Universal::selectTable('employee_position');
+            $employee_status = Universal::selectTable('employee_status');
+            $fields_value = CustomField::getFieldsValue('employees');
+            $fields = Company::getCompanyFields('employees');
+            return view('user.employee.employee',compact('employee_status','employee_position','cost_centers','branch','edit_roles','department','employee','fields_value','fields'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";
