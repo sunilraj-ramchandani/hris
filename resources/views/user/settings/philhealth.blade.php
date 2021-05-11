@@ -39,7 +39,7 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#phealth" class="company_edit" data-name="{{$phealth->name}}" data-id="{{$phealth->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#phealth" class="company_edit" data-id="{{$phealth->id}}" data-price_min="{{$phealth->price_min}}" data-price_max="{{$phealth->price_max}}" data-method="{{$phealth->method}}" data-rate="{{$phealth->rate}}"><i class="fa fa-edit" ></i></button> 
                     <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#phealth"  data-id="{{$phealth->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
@@ -69,5 +69,46 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
+
+     $(".company_edit").click(function(){
+     
+        $("[name='price_min']").val($(this).data("price_min"));
+
+        $("[name='price_max']").val($(this).data("price_max"));
+        $("[name='method']").val($(this).data("method"));
+
+        $("[name='rate']").val($(this).data("rate"));
+        $("[name='id']").val($(this).data("id"));
+    });
+
+    $('#phealth').on('hidden.bs.modal', function () {
+        $("[name='price_min']").val('');
+   
+        $("[name='price_max']").val('');
+        $("[name='method']").val('');
+   
+        $("[name='rate']").val('');
+        $(".formsz").show();
+  
+        $('#price_max').prop('required',true);
+        $('#price_min').prop('required',true);
+          $('#method').prop('required',true);
+        $('#rate').prop('required',true);
+
+        $(".modal-dialog").addClass('modal-xl');
+    })
+
+
+  $(".company_delete").click(function(){
+        $('.modal-title').text('Are you sure you want to delete company?');
+        $('.submit-company').text('Yes');
+        $("[name='id']").val($(this).data("id"));
+        $(".formsz").hide();
+        $('#ee_contribution').prop('required',false);
+        $('#price_max').prop('required',false);
+        $('#price_min').prop('required',false);
+         $('#method').prop('required',false);
+        $('#rate').prop('required',false);
+    });
 </script>
 @endsection

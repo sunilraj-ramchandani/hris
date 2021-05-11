@@ -69,5 +69,47 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
+
+
+     $(".company_edit").click(function(){
+     
+        $("[name='from']").val($(this).data("from"));
+
+        $("[name='to']").val($(this).data("to"));
+        $("[name='ee_rate']").val($(this).data("ee_rate"));
+
+        $("[name='er_rate']").val($(this).data("er_rate"));
+        $("[name='id']").val($(this).data("id"));
+    });
+
+    $('#phealth').on('hidden.bs.modal', function () {
+        $("[name='from']").val('');
+   
+        $("[name='to']").val('');
+        $("[name='ee_rate']").val('');
+   
+        $("[name='er_rate']").val('');
+        $(".formsz").show();
+  
+        $('#from').prop('required',true);
+        $('#to').prop('required',true);
+          $('#ee_rate').prop('required',true);
+        $('#ee_rate').prop('required',true);
+
+        $(".modal-dialog").addClass('modal-xl');
+    })
+
+
+  $(".company_delete").click(function(){
+        $('.modal-title').text('Are you sure you want to delete company?');
+        $('.submit-company').text('Yes');
+        $("[name='id']").val($(this).data("id"));
+        $(".formsz").hide();
+        $('#ee_contribution').prop('required',false);
+        $('#from').prop('required',false);
+        $('#to').prop('required',false);
+         $('#ee_rate').prop('required',false);
+        $('#er_rate').prop('required',false);
+    });
 </script>
 @endsection
