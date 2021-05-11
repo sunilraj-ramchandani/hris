@@ -109,6 +109,15 @@
                     </label>
                 </div>
             </div> 
+            <div class = "col-2 mt-2">
+                <label>Number of Payouts (per month)</label>
+                <select name="payouts" id="payouts" class="mt-2 form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div> 
         </div>
         @if($edit_roles == "edit")
         <div class = "d-none text-center col-11 mt-4" id = "submit">

@@ -19,7 +19,7 @@
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/buttons.print.min.js') }}"></script>
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/buttons.colVis.min.js') }}"></script>
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/sidebar.js') }}"></script>
-
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/select2.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/bootstrap.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
@@ -31,6 +31,7 @@
         
         <link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/buttons.bootstrap5.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
         <script src="https://kit.fontawesome.com/649e71a687.js" crossorigin="anonymous"></script>
     </head>
     <body>
