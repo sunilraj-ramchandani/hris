@@ -22,8 +22,8 @@
                             <input type="text" name="desc" id="desc" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
-                            <label>Rate</label>
-                            <input type="number" name="rate" id="rate" class="mt-2 form-control">
+                            <label>Rate (%)</label>
+                            <input type="number" step="0.01" name="rate" id="rate" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">

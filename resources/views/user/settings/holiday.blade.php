@@ -16,7 +16,7 @@
             <tr>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Rate</th>
+                <th>Rate (%)</th>
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
@@ -28,7 +28,7 @@
             <tr>
                 <td>{{$holi->name}}</td>
                 <td>{{$holi->description}}</td>
-                <td>{{$holi->rate}}</td>
+                <td>{{number_format($holi->rate, 2, '.', ',')}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $holi->id)
                         <td>{{$val->custom_value}}</td>
@@ -37,8 +37,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#holiday" class="company_edit" data-id="{{$holi->id}}" data-rate="{{$holi->rate}}" data-name="{{$holi->name}}" data-descs="{{$holi->description}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#holiday"  data-id="{{$holi->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#holiday" class="company_edit" data-id="{{$holi->id}}" data-rate="{{$holi->rate}}" data-name="{{$holi->name}}" data-desc="{{$holi->description}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="holiday-add" data-bs-target="#delete_pop"   data-id="{{$holi->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -67,51 +67,5 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
-
-  $(".company_edit").click(function(){
-     
-        $("[name='name']").val($(this).data("name"));
-  
-        $("[name='desc']").val($(this).data("descs"));
-  
-        $("[name='rate']").val($(this).data("rate"));
-
-        $("[name='id']").val($(this).data("id"));
-    });
-  $(".btn-close").click(function(){
-
-        $("[name='name']").val('');
-   
-        $("[name='id']").val('');      
-        $("[name='rate']").val('');
-
-        $("[name='desc']").val('');
-    });
-    $('#holiday').on('hidden.bs.modal', function () {
-      
-        $("[name='address']").val('');
-     
-        $("[name='id']").val('');;
-       
-        $("[name='rate']").val('');
-        $("[name='desc']").val('');
-        $(".formsz").show();
-  
-        $('#name').prop('required',true);
-        $('#desc').prop('required',true);
-
-        $(".modal-dialog").addClass('modal-xl');
-    })
-    
-  $(".company_delete").click(function(){
-        $('.modal-title').text('Are you sure you want to delete company?');
-        $('.submit-company').text('Yes');
-        $("[name='id']").val($(this).data("id"));
-        $(".formsz").hide();
-        $('#name').prop('required',false);
-        $('#rate').prop('required',false);
-        $('#desc').prop('required',false);
-        $(".modal-dialog").removeClass('modal-xl');
-    });
 </script>
 @endsection

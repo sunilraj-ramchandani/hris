@@ -50,7 +50,7 @@ class holidayController extends Controller
    public function add(Request $request){
         if(request('id')==''){
             $created_date = date("Y-m-d H:i:s");
-            $insert = DB::insert('insert into hris.holiday (name,description,rate,created_by,created_at,company_id) values (?,?,?,?,?,?)',[request('name'),request('desc'),request('rate'),Session::get('user'),$created_date,Session::get('id')]); 
+            $insert = DB::insert('insert into hris.holiday (name,description,rate,created_by,updated_by,company_id) values (?,?,?,?,?,?)',[request('name'),request('desc'),request('rate'),Session::get('user'),Session::get('user'),Session::get('id')]); 
              $success_msg="Added Successfully!";
                 return redirect()->route('holiday')->with([ 'success_msg' => $success_msg ]);
         }else{

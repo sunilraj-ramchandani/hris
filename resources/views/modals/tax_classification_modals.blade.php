@@ -14,7 +14,7 @@
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
                             <label>Tax Classification Name</label>
-                            <input required type="number" name="name" id="name" class="mt-2 form-control">
+                            <input required type="text" name="name" id="name" class="mt-2 form-control">
                             <input type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
