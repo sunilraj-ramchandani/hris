@@ -29,12 +29,12 @@
         <tbody>
             @foreach($sss as $SSS)
             <tr>
-                <td>{{$SSS->price_min}}</td>
-                <td>{{$SSS->price_max}}</td>
-                <td>{{$SSS->ee_contribution}}</td>
-                <td>{{$SSS->er_contribution}}</td>
-                <td>{{$SSS->ee_compensation}}</td>
-                <td>{{$SSS->er_compesation}}</td>
+                <td>{{number_format($SSS->price_min, 2, '.', ',')}}</td>
+                <td>{{number_format($SSS->price_max, 2, '.', ',')}}</td>
+                <td>{{number_format($SSS->ee_contribution, 2, '.', ',')}}</td>
+                <td>{{number_format($SSS->ee_compensation, 2, '.', ',')}}</td>
+                <td>{{number_format($SSS->er_contribution, 2, '.', ',')}}</td>
+                <td>{{number_format($SSS->er_compesation, 2, '.', ',')}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $SSS->id)
                         <td>{{$val->custom_value}}</td>
@@ -43,8 +43,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#sss" class="company_edit" data-id="{{$SSS->id}}"data-min="{{$SSS->price_min}}" data-max="{{$SSS->price_max}}" data-ee_contribution="{{$SSS->ee_contribution}}" data-ee_contributions="{{$SSS->er_contribution}}" data-ee_compensation="{{$SSS->ee_compensation}}" data-ee_compensations="{{$SSS->er_compesation}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#sss"  data-id="{{$SSS->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#sss" data-id="{{$SSS->id}}"data-price_min="{{$SSS->price_min}}" data-price_max="{{$SSS->price_max}}" data-ee_contribution="{{$SSS->ee_contribution}}" data-er_contribution="{{$SSS->er_contribution}}" data-ee_compensation="{{$SSS->ee_compensation}}" data-er_compensation="{{$SSS->er_compesation}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="sss-add" data-bs-target="#delete_pop"  data-id="{{$SSS->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -64,7 +64,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
     var table = $('#sss-table').DataTable( {
         lengthChange: true,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
@@ -72,117 +72,10 @@
  
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
-} );
-</script>
-<script>
-$(document).ready(function() {
-  $("#price_max").on("input", function() {
-    verify()
-  });
 });
-$(".btn-close").click(function(){
-
-        $("[name='price_min']").val('');
-   
-        $("[name='price_max']").val('');
-        $("[name='ee_contribution']").val('');
-   
-        $("[name='er_contribution']").val('');
-
-        $("[name='ee_compensation']").val('');
-   
-        $("[name='er_compensation']").val('');
-
-    });
-    $('#sss').on('hidden.bs.modal', function () {
-        $("[name='price_min']").val('');
-   
-        $("[name='price_max']").val('');
-        $("[name='ee_contribution']").val('');
-   
-        $("[name='er_contribution']").val('');
-
-        $("[name='ee_compensation']").val('');
-   
-        $("[name='er_compensation']").val('');
-        $(".formsz").show();
-  
-        $('#price_max').prop('required',true);
-        $('#price_min').prop('required',true);
-          $('#ee_contribution').prop('required',true);
-        $('#er_contribution').prop('required',true);
-          $('#ee_compensation').prop('required',true);
-        $('#er_compensation').prop('required',true);
-
-
-        $(".modal-dialog").addClass('modal-xl');
-    })
-     $(".company_edit").click(function(){
-     
-        $("[name='price_min']").val($(this).data("min"));
-
-        $("[name='price_max']").val($(this).data("max"));
-        $("[name='ee_contribution']").val($(this).data("ee_contribution"));
-
-        $("[name='er_contribution']").val($(this).data("ee_contributions"));
-        $("[name='ee_compensation']").val($(this).data("ee_compensation"));
-
-        $("[name='er_compensation']").val($(this).data("ee_compensations"));
-        $("[name='id']").val($(this).data("id"));
-    });
-
-  $(".company_delete").click(function(){
-        $('.modal-title').text('Are you sure you want to delete company?');
-        $('.submit-company').text('Yes');
-        $("[name='id']").val($(this).data("id"));
-        $(".formsz").hide();
-        $('#ee_contribution').prop('required',false);
-        $('#price_max').prop('required',false);
-        $('#price_min').prop('required',false);
-         $('#er_contribution').prop('required',false);
-        $('#ee_compensation').prop('required',false);
-        $('#er_compensation').prop('required',false);
-        $(".modal-dialog").removeClass('modal-xl');
-    });
-function verify() {
-  var firstValue = parseInt($("#price_min").val());
-  var secondValue = parseInt($("#price_max").val());
-  if (firstValue <= secondValue) {
-$("#errr").hide();
-
- $("#submitszxc").attr("disabled", false);
-  } else {
- $("#submitszxc").attr("disabled", true);
- $("#errr").show();
-   }
-}  
 </script>
-<script>
 
 
-function verify2() {
-  var firstValues = parseInt($("#ee_contribution").val());
-  var secondValues= parseInt($("#er_contribution").val());
-  if (firstValues <= secondValues) {
-$("#errrr").hide();
 
- $("#submitszxc").attr("disabled", false);
-  } else {
- $("#submitszxc").attr("disabled", true);
- $("#errrr").show();
-   }
-}  
-function verify3() {
-  var firstValuess = parseInt($("#ee_compensation").val());
-  var secondValuess= parseInt($("#er_compensation").val());
-  if (firstValuess <= secondValuess) {
-$("#errrrr").hide();
 
- $("#submitszxc").attr("disabled", false);
-  } else {
- $("#submitszxc").attr("disabled", true);
- $("#errrrr").show();
-   }
-}  
-</script>
 @endsection

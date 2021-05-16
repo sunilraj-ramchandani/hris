@@ -35,8 +35,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#cost_centers" class="company_edit" data-name="{{$cst->name}}" data-desc="{{$cst->description}}" data-id="{{$cst->id}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#cost_centers"  data-id="{{$cst->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#cost_centers"  data-name="{{$cst->name}}" data-desc="{{$cst->description}}" data-id="{{$cst->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="cost-center-add" data-bs-target="#delete_pop"  data-id="{{$cst->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach

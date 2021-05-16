@@ -2,7 +2,7 @@
 @section('title', 'System Setup')
 
 @section('content')
-@include('modals.company_modals')
+@include('modals.branch_modals')
 @include('includes.custom_field_view')
 <div class="container-fluid pt-4 mt-4">
     @if (Session::has('success_msg'))
@@ -35,8 +35,8 @@
                         <td>N/A</td>
                     @endif
                 @endforeach
-                <td>  <button class="branch_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#branch" class="branch_edit" data-name="{{$brc->name}}" data-address="{{$brc->address}}" data-id="{{$brc->id}}"><i class="fa fa-edit"></i></button> 
-                    <button class="branch_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#branch"  data-id="{{$brc->id}}"><i class="fas fa-trash-alt"></i></button></td>
+                <td>  <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#branch" data-name="{{$brc->name}}" data-address="{{$brc->address}}" data-id="{{$brc->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="branch-add" data-bs-target="#delete_pop"  data-id="{{$brc->id}}"><i class="fas fa-trash-alt"></i></button></td>
             </tr>
             @endforeach
         </tbody>

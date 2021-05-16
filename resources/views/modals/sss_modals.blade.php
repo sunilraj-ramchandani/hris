@@ -12,37 +12,37 @@
             {{csrf_field()}}
                 <div class = "row">
                     <div class = "col-12 formsz">
+                        <div class="alert alert-warning modal-alert fade show d-none" id = "error" role="alert">
+                            <p>'From' cannot be larger than 'To'</p>
+                        </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (From)</label>
-                            <input required type="number" name="price_min" id="price_min" class="mt-2 form-control" onkeyup="verify()">
+                            <input required type="number" onkeyup="MinMaxValidate()" step="0.01" name="price_min" id="price_min" class="mt-2 form-control">
                             <input type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (To)</label>
-                            <input required type="number" name="price_max" id="price_max" class="mt-2 form-control">
-                           <p id="errr" style="display: none;">Price max must higher on price min!!!</p>
+                            <input required type="number" onkeyup="MinMaxValidate()" step="0.01" name="price_max" id="price_max" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Employee Contribution</label>
-                            <input required type="number" name="ee_contribution" id="ee_contribution"  onkeyup="verify2()" class="mt-2 form-control">
+                            <input required type="number" step="0.01" name="ee_contribution" id="ee_contribution" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Employer Contribution</label>
-                            <input required type="number" name="er_contribution" id="er_contribution" onkeyup="verify2()" class="mt-2 form-control">
-                            <p id="errrr" style="display: none;">Must higher than first employee contribution!</p>
+                            <input required type="number" step="0.01" name="er_contribution" id="er_contribution" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Employee Compensation</label>
-                            <input required type="number" name="ee_compensation" id="ee_compensation"  onkeyup="verify3()" class="mt-2 form-control">
+                            <input required type="number" step="0.01" name="ee_compensation" id="ee_compensation" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Employer Compensation</label>
-                            <input required type="number" name="er_compensation" id="er_compensation"  onkeyup="verify3()" class="mt-2 form-control">
-                             <p id="errrrr" style="display: none;">Must higher than first employee compensation!</p>
+                            <input required type="number" step="0.01" name="er_compensation" id="er_compensation" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
-                        <button class="submit-company btn btn-primary" id="submitszxc">Save</button>
+                        <button class="submit-company btn btn-primary">Save</button>
                     </div>
                 </div>
                 </form>

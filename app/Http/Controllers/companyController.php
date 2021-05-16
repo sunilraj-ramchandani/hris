@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\CustomField;
 use App\Models\Company;
+use App\Models\Universal;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -21,7 +22,7 @@ class companyController extends Controller
             }else{
                 $edit_roles = "view";
             }
-            $company = Company::getCompany();
+            $company = Universal::selectTable('company');
             $fields_value = CustomField::getFieldsValue('company');
             $fields = Company::getCompanyFields('company');
             //dd($fields_value);

@@ -36,33 +36,27 @@ use App\Http\Controllers\loanController;
     Route::post('/system-setup', [settingsController::class, 'update'])->name('settings.post');
     
     //Company
-    Route::get('/company', [companyController::class, 'index'])->name('company');
-    Route::post('/company', [companyController::class, 'update'])->name('company.post');
+    Route::any('/company', [companyController::class, 'index'])->name('company');
     Route::post('/company-add', [companyController::class, 'add'])->name('company.add');
     
     //Branch
-    Route::get('/branch', [branchController::class, 'index'])->name('branch');
-    Route::post('/branch', [branchController::class, 'update'])->name('branch.post');
+    Route::any('/branch', [branchController::class, 'index'])->name('branch');
     Route::post('/branch-add', [branchController::class, 'add'])->name('branch.add');
 
     //Department
-    Route::get('/department', [departmentController::class, 'index'])->name('department');
-    Route::post('/department', [departmentController::class, 'update'])->name('department.post');
+    Route::any('/department', [departmentController::class, 'index'])->name('department');
     Route::post('/department-add', [departmentController::class, 'add'])->name('department.add');
      
     //Cost Centers
-    Route::get('/cost-center', [costCenterController::class, 'index'])->name('cost');
-    Route::post('/cost-center', [costCenterController::class, 'update'])->name('cost.post');
+    Route::any('/cost-center', [costCenterController::class, 'index'])->name('cost');
     Route::post('/cost-center-add', [costCenterController::class, 'add'])->name('cost.add');
  
     //Minimum Wage
-    Route::get('/minimum-wage', [minimumWageController::class, 'index'])->name('wage');
-    Route::post('/minimum-wage', [minimumWageController::class, 'update'])->name('wage.post');
+    Route::any('/minimum-wage', [minimumWageController::class, 'index'])->name('wage');
     Route::post('/minimum-wage-add', [minimumWageController::class, 'add'])->name('wage.add');
     
     //SSS
-    Route::get('/sss', [sssController::class, 'index'])->name('sss');
-    Route::post('/sss', [sssController::class, 'update'])->name('sss.post');
+    Route::any('/sss', [sssController::class, 'index'])->name('sss');
     Route::post('/sss-add', [sssController::class, 'add'])->name('sss.add');
 
     //philhealth
@@ -107,10 +101,15 @@ use App\Http\Controllers\loanController;
     Route::post('/employee-position', [employeeController::class, 'update_position'])->name('employee-position.post');
     Route::post('/employee-position-add', [employeeController::class, 'add_position'])->name('employee-position.add');
 
-     //Employee Positions
-     Route::get('/employee-allowance', [employeeController::class, 'index_emp_allowance'])->name('employee-emp-allowance');
-     Route::post('/employee-allowance', [employeeController::class, 'update_emp_allowance'])->name('employee-emp-allowance.post');
-     Route::post('/employee-allowance-add', [employeeController::class, 'add_emp_allowance'])->name('employee-emp-allowance.add');
+    //Employee Allowance
+    Route::get('/employee-allowance', [employeeController::class, 'index_emp_allowance'])->name('employee-emp-allowance');
+    Route::post('/employee-allowance', [employeeController::class, 'update_emp_allowance'])->name('employee-emp-allowance.post');
+    Route::post('/employee-allowance-add', [employeeController::class, 'add_emp_allowance'])->name('employee-emp-allowance.add');
+
+    //Employee Allowance
+    Route::get('/employee-loan', [employeeController::class, 'index_emp_loan'])->name('employee-emp-loan');
+    Route::post('/employee-loan', [employeeController::class, 'update_emp_loan'])->name('employee-emp-loan.post');
+    Route::post('/employee-loan-add', [employeeController::class, 'add_emp_loan'])->name('employee-emp-loan.add');
 
     //Allowance
     Route::get('/allowance', [allowanceController::class, 'index'])->name('allowance');

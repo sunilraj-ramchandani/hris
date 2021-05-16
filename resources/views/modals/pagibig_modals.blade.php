@@ -12,21 +12,24 @@
             {{csrf_field()}}
                 <div class = "row">
                     <div class = "col-12 formsz">
+                        <div class="alert alert-warning modal-alert fade show d-none" id = "error" role="alert">
+                            <p>'From' cannot be larger than 'To'</p>
+                        </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (From)</label>
-                            <input type="number" name="from" id="from" class="mt-2 form-control">
+                            <input type="number" step="0.01" onkeyup="MinMaxValidate()" name="price_min" id="price_min" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (To)</label>
-                            <input type="number" name="to" id="to" class="mt-2 form-control">
+                            <input type="number" step="0.01" onkeyup="MinMaxValidate()" name="price_max" id="price_max" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
-                            <label>Employee Rate (%)</label>
-                            <input type="number" name="ee_rate" id="ee_rate" class="mt-2 form-control">
+                            <label>Percent (%)</label>
+                            <input type="number" step="0.01" name="percent" id="percent" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
-                            <label>Employer Rate (%)</label>
-                            <input type="number" name="er_rate" id="er_rate" class="mt-2 form-control">
+                            <label>Fixed (P)</label>
+                            <input type="number" step="0.01" name="fixed" id="fixed" class="mt-2 form-control">
                             <input type="hidden" name="id" id="id" class="mt-2 form-control">
                         </div>
                     </div>

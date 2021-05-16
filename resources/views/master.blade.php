@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <script type="text/javascript" charset="utf8" src="{{ asset('/js/bootstrap.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+        <script type="text/javascript" charset="utf8" src="{{ asset('/js/app.js') }}"></script>
         
         
         
@@ -40,6 +41,7 @@
         @endif
         @yield('content')
         @include('includes.custom_field')
+        @include('modals.delete_modals')
     </body>
     <script>
     $(".add_custom_field").click(function(){

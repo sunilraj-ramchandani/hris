@@ -78,10 +78,30 @@ class employeeController extends Controller
             $pay_settings = Universal::selectTable('pay_settings');
             $employee = Universal::selectTable('employees');
             $allowance = Universal::selectTable('allowance');
-            $employee_allowance = Universal::selectTable('employees_allowance');
-            $fields_value = CustomField::getFieldsValue('employees');
-            $fields = Company::getCompanyFields('employees');
+            $employee_allowance = Employee::employeeAllowanceDeduction('employees_allowance','employees','allowance',['firstname','lastname','middlename','b.name','c.amount']);
+            $fields_value = CustomField::getFieldsValue('employees_allowance');
+            $fields = Company::getCompanyFields('employees_allowance');
             return view('user.employee.employee-allowance',compact('pay_settings','allowance','employee','employee_allowance','fields_value','fields','edit_roles'));
+        }else{
+            Session::flush();
+            $error_msg = "You are not allowed to access that module, you will now be signed out";
+            return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
+        }
+    }
+    public function index_emp_loan(){
+        if(User::hasRole('employee-edit') || User::hasRole('employee-view') ){
+            if(User::hasRole('employee-edit')){
+                $edit_roles = "edit";
+            }else{
+                $edit_roles = "view";
+            }
+            $pay_settings = Universal::selectTable('pay_settings');
+            $employee = Universal::selectTable('employees');
+            $loans = Universal::selectTable('loan');
+            $employees_loan = Universal::selectTable('employees_loan');
+            $fields_value = CustomField::getFieldsValue('employees_loan');
+            $fields = Company::getCompanyFields('employees_loan');
+            return view('user.employee.employee-loan',compact('pay_settings','loans','employee','employees_loan','fields_value','fields','edit_roles'));
         }else{
             Session::flush();
             $error_msg = "You are not allowed to access that module, you will now be signed out";

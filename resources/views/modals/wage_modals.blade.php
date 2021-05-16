@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Wage</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Minimum Wage</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
       
@@ -14,16 +14,16 @@
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
                             <label>Region</label>
-                            <input required type="text" name="name" id="name" class="mt-2 form-control">
+                            <input required type="text" readonly name="region" id="region" class="mt-2 form-control">
                             <input type="hidden" name="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Price</label>
-                            <input required type="text" name="address" id="address" class="mt-2 form-control">
+                            <input required type="text" name="price" id="price" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
-                        <button class="submit-company btn btn-primary">Update Minimum Wage</button>
+                        <button class="submit-company btn btn-primary">Save</button>
                     </div>
                 </div>
                 </form>

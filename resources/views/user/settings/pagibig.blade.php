@@ -16,8 +16,8 @@
             <tr>
                 <th>From</th>
                 <th>To</th>
-                <th>Employee Rate</th>
-                <th>Employer Rate</th>
+                <th>Percent Rate</th>
+                <th>Fixed Rate</th>
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
@@ -27,10 +27,10 @@
         <tbody>
             @foreach($pagibig as $pagibg)
             <tr>
-                <td>{{$pagibg->price_min}}</td>
-                <td>{{$pagibg->price_max}}</td>
-                <td>{{$pagibg->ee_rate}}</td>
-                <td>{{$pagibg->er_rate}}</td>
+                <td>{{number_format($pagibg->price_min, 2, '.', ',')}}</td>
+                <td>{{number_format($pagibg->price_max, 2, '.', ',')}}</td>
+                <td>{{$pagibg->percent}}</td>
+                <td>{{number_format($pagibg->fixed, 2, '.', ',') }}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $pagibg->id)
                         <td>{{$val->custom_value}}</td>
@@ -39,8 +39,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#pagibig" class="company_edit" data-er_rate="{{$pagibg->er_rate}}" data-ee_rate="{{$pagibg->ee_rate}}" data-id="{{$pagibg->id}}" data-from="{{$pagibg->price_min}}" data-to="{{$pagibg->price_max}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#pagibig"  data-id="{{$pagibg->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#pagibig" data-percent="{{$pagibg->percent}}" data-fixed="{{$pagibg->fixed}}" data-id="{{$pagibg->id}}" data-price_min="{{$pagibg->price_min}}" data-price_max="{{$pagibg->price_max}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="pagibig-add" data-bs-target="#delete_pop"  data-id="{{$pagibg->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -69,47 +69,5 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
-
-
-     $(".company_edit").click(function(){
-     
-        $("[name='from']").val($(this).data("from"));
-
-        $("[name='to']").val($(this).data("to"));
-        $("[name='ee_rate']").val($(this).data("ee_rate"));
-
-        $("[name='er_rate']").val($(this).data("er_rate"));
-        $("[name='id']").val($(this).data("id"));
-    });
-
-    $('#phealth').on('hidden.bs.modal', function () {
-        $("[name='from']").val('');
-   
-        $("[name='to']").val('');
-        $("[name='ee_rate']").val('');
-   
-        $("[name='er_rate']").val('');
-        $(".formsz").show();
-  
-        $('#from').prop('required',true);
-        $('#to').prop('required',true);
-          $('#ee_rate').prop('required',true);
-        $('#ee_rate').prop('required',true);
-
-        $(".modal-dialog").addClass('modal-xl');
-    })
-
-
-  $(".company_delete").click(function(){
-        $('.modal-title').text('Are you sure you want to delete company?');
-        $('.submit-company').text('Yes');
-        $("[name='id']").val($(this).data("id"));
-        $(".formsz").hide();
-        $('#ee_contribution').prop('required',false);
-        $('#from').prop('required',false);
-        $('#to').prop('required',false);
-         $('#ee_rate').prop('required',false);
-        $('#er_rate').prop('required',false);
-    });
 </script>
 @endsection

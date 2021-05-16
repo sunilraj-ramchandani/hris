@@ -32,20 +32,20 @@ class departmentController extends Controller
     public function add(Request $request){
         if(request('id')==''){
             $created_date = date("Y-m-d H:i:s");
-            $insert = DB::insert('insert into hris.department (name,created_by,created_at,company_id) values (?,?,?,?)',[request('address'),Session::get('user'),$created_date,Session::get('id')]); 
+            $insert = DB::insert('insert into hris.department (name,created_by,updated_by,company_id) values (?,?,?,?)',[request('name'),Session::get('user'),Session::get('user'),Session::get('id')]); 
              $success_msg="Added Successfully!";
                 return redirect()->route('department')->with([ 'success_msg' => $success_msg ]);
         }else{
-             if(request('address')==''){
-                  $deleted_date = date("Y-m-d H:i:s");
+             if(request('name')==''){
+                $deleted_date = date("Y-m-d H:i:s");
                 $delete=DB::update('update hris.department set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
                 $success_msg="Company Deleted Successfully!";
                 
                 return redirect()->route('department')->with([ 'success_msg' => $success_msg ]);
              }
              else{
-                  $updated_date = date("Y-m-d H:i:s");
-                $update =DB::update('update hris.department set name = ? ,updated_at=?,updated_by=? where id = ?',[request('address'), $updated_date,Session::get('user'),request('id')]);
+                $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.department set name = ? ,updated_at=?,updated_by=? where id = ?',[request('name'), $updated_date,Session::get('user'),request('id')]);
                 $success_msg="Updated Successfully!";
                 return redirect()->route('department')->with([ 'success_msg' => $success_msg ]);
              }

@@ -14,21 +14,21 @@
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
                             <label>Name</label>
-                            <input required type="text" name="address" id="address" class="mt-2 form-control">
+                            <input required type="text" name="name" id="name" class="mt-2 form-control">
                               <input type="text" name="id" class="mt-2 form-control" hidden="">
                         </div>
                     </div>
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
                             <label>Description</label>
-                            <input required type="text" name="desc" id="desc" class="mt-2 form-control">
+                            <textarea required name="desc" id="desc" class="mt-2 form-control"></textarea>
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">
                         <button class="submit-company btn btn-primary">Save</button>
                     </div>
                 </div>
-                </form>
+            </form>
             </div>
         </div>
     </div>

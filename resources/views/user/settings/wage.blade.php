@@ -22,9 +22,9 @@
             @foreach($wage as $wages)
             <tr>
                 <td>{{$wages->region}}</td>
-                <td>{{$wages->price}}</td>
+                <td>{{number_format($wages->price, 2, '.', ',')}}</td>
                 <td>
-                    <button class="wage_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#wage" class="wage_edit" data-region="{{$wages->region}}" data-price="{{$wages->price}}"  data-id="{{$wages->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#wage" data-region="{{$wages->region}}" data-price="{{$wages->price}}"  data-id="{{$wages->id}}"><i class="fa fa-edit"></i></button> 
                 </td>
             </tr>
             @endforeach
@@ -42,14 +42,5 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
-
-   $(".wage_edit").click(function(){
-     $('.modal-title').text('Edit Branch Information');
-     
-        $('.submit-company').text('Update Company');
-        $("[name='name']").val($(this).data("region"));
-        $("[name='address']").val($(this).data("price"));
-        $("[name='id']").val($(this).data("id"));
-    });
 </script>
 @endsection

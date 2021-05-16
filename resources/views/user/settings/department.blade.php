@@ -33,8 +33,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#department" class="company_edit" data-name="{{$dpt->name}}" data-id="{{$dpt->id}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#department"  data-id="{{$dpt->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#department" data-name="{{$dpt->name}}" data-id="{{$dpt->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="department-add" data-bs-target="#delete_pop"  data-id="{{$dpt->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -54,7 +54,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
     var table = $('#department-table').DataTable( {
         lengthChange: true,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
@@ -63,39 +63,6 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
-        $(".company_edit").click(function(){
-     
-        $("[name='address']").val($(this).data("name"));
-        $("[name='id']").val($(this).data("id"));
-    });
-  $(".btn-close").click(function(){
-
-        $("[name='address']").val('');
-   
-        $("[name='id']").val('');
-    });
-    $('#department').on('hidden.bs.modal', function () {
-      
-        $("[name='address']").val('');
-     
-        $("[name='id']").val('');
-        $(".formsz").show();
-  
-        $('#address').prop('required',true);
-
-        $(".modal-dialog").addClass('modal-xl');
-    })
-    
-  $(".company_delete").click(function(){
-        $('.modal-title').text('Are you sure you want to delete company?');
-        $('.submit-company').text('Yes');
-        $("[name='id']").val($(this).data("id"));
-        $(".formsz").hide();
-        $('#name').prop('required',false);
-        $('#address').prop('required',false);
-        $('#tin').prop('required',false);
-        $(".modal-dialog").removeClass('modal-xl');
-    });
 </script>
 
 @endsection

@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Session;
 use App\Models\User;
+use App\Models\Universal;
 use App\Models\CustomField;
 use App\Models\Branch;
 use App\Models\Company;
@@ -22,7 +23,7 @@ class branchController extends Controller
             }else{
                 $edit_roles = "view";
             }
-            $branch = Branch::getBranch();
+            $branch = Universal::selectTable('branch');
             $fields_value = CustomField::getFieldsValue('branch');
             $fields = Company::getCompanyFields('branch');
             //dd($fields_value);

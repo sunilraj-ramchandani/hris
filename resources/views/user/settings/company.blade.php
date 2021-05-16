@@ -37,8 +37,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#company" class="company_edit" data-name="{{$cmp->name}}" data-address="{{$cmp->address}}" data-tin="{{$cmp->tin}}" data-id="{{$cmp->id}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#company"  data-id="{{$cmp->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#company" data-name="{{$cmp->name}}" data-address="{{$cmp->address}}" data-tin="{{$cmp->tin}}" data-id="{{$cmp->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="company-add" data-bs-target="#delete_pop"  data-id="{{$cmp->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -63,46 +63,7 @@
         lengthChange: true,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
     } );
- 
-    table.buttons().container()
-        .appendTo( $('#button_wrapper') );
-} );
-
-    $(".company_edit").click(function(){
-        $('.modal-title').text('Edit Company');
-        $('.submit-company').text('Update Company');
-        $("[name='name']").val($(this).data("name"));
-        $("[name='address']").val($(this).data("address"));
-        $("[name='tin']").val($(this).data("tin"));
-        $("[name='id']").val($(this).data("id"));
-    });
-
-  $(".company_delete").click(function(){
-        $('.modal-title').text('Are you sure you want to delete company?');
-        $('.submit-company').text('Yes');
-        $("[name='id']").val($(this).data("id"));
-        $(".formsz").hide();
-        $('#name').prop('required',false);
-        $('#address').prop('required',false);
-        $('#tin').prop('required',false);
-        $(".modal-dialog").removeClass('modal-xl');
-    });
-     $(".btn-close").click(function(){
-        $("[name='name']").val('');
-        $("[name='address']").val('');
-        $("[name='tin']").val('');
-        $("[name='id']").val('');
-    });
-    $('#company').on('hidden.bs.modal', function () {
-        $("[name='name']").val('');
-        $("[name='address']").val('');
-        $("[name='tin']").val('');
-        $("[name='id']").val('');
-        $(".formsz").show();
-        $('#name').prop('required',true);
-        $('#address').prop('required',true);
-        $('#tin').prop('required',true);
-        $(".modal-dialog").addClass('modal-xl');
-    })
+    table.buttons().container().appendTo( $('#button_wrapper') );
+});
 </script>
 @endsection
