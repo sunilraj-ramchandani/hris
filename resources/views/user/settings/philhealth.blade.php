@@ -16,8 +16,8 @@
             <tr>
                 <th>From</th>
                 <th>To</th>
-                <th>Fixed or Percent</th>
-                <th>Premium Rate</th>
+                <th>Percent Rate</th>
+                <th>Fixed Rate</th>
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
@@ -27,10 +27,10 @@
         <tbody>
             @foreach($philhealth as $phealth)
             <tr>
-                <td>{{$phealth->price_min}}</td>
-                <td>{{$phealth->price_max}}</td>
-                <td>{{$phealth->method}}</td>
-                <td>{{$phealth->rate}}</td>
+                <td>{{number_format($phealth->price_min, 2, '.', ',')}}</td>
+                <td>{{number_format($phealth->price_max, 2, '.', ',')}}</td>
+                <td>{{number_format($phealth->percent, 2, '.', ',')}}</td>
+                <td>{{number_format($phealth->fixed, 2, '.', ',')}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $phealth->id)
                         <td>{{$val->custom_value}}</td>
@@ -39,8 +39,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#phealth" class="company_edit" data-id="{{$phealth->id}}" data-price_min="{{$phealth->price_min}}" data-price_max="{{$phealth->price_max}}" data-method="{{$phealth->method}}" data-rate="{{$phealth->rate}}"><i class="fa fa-edit" ></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#phealth"  data-id="{{$phealth->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#phealth" data-id="{{$phealth->id}}" data-price_min="{{$phealth->price_min}}" data-price_max="{{$phealth->price_max}}" data-percent="{{$phealth->percent}}" data-fixed="{{$phealth->fixed}}"><i class="fa fa-edit" ></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="philhealth-add" data-bs-target="#delete_pop"  data-id="{{$phealth->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -69,46 +69,5 @@
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
 } );
-
-     $(".company_edit").click(function(){
-     
-        $("[name='price_min']").val($(this).data("price_min"));
-
-        $("[name='price_max']").val($(this).data("price_max"));
-        $("[name='method']").val($(this).data("method"));
-
-        $("[name='rate']").val($(this).data("rate"));
-        $("[name='id']").val($(this).data("id"));
-    });
-
-    $('#phealth').on('hidden.bs.modal', function () {
-        $("[name='price_min']").val('');
-   
-        $("[name='price_max']").val('');
-        $("[name='method']").val('');
-   
-        $("[name='rate']").val('');
-        $(".formsz").show();
-  
-        $('#price_max').prop('required',true);
-        $('#price_min').prop('required',true);
-          $('#method').prop('required',true);
-        $('#rate').prop('required',true);
-
-        $(".modal-dialog").addClass('modal-xl');
-    })
-
-
-  $(".company_delete").click(function(){
-        $('.modal-title').text('Are you sure you want to delete company?');
-        $('.submit-company').text('Yes');
-        $("[name='id']").val($(this).data("id"));
-        $(".formsz").hide();
-        $('#ee_contribution').prop('required',false);
-        $('#price_max').prop('required',false);
-        $('#price_min').prop('required',false);
-         $('#method').prop('required',false);
-        $('#rate').prop('required',false);
-    });
 </script>
 @endsection

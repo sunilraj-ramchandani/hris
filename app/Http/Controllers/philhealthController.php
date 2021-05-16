@@ -32,7 +32,7 @@ class philhealthController extends Controller
      public function add(Request $request){
         if(request('id')==''){
             $created_date = date("Y-m-d H:i:s");
-            $insert = DB::insert('insert into hris.philhealth (price_min,price_max,method,rate,created_by,created_at,company_id) values (?,?,?,?,?,?,?)',[request('price_min'),request('price_max'),request('method'),request('rate'),Session::get('user'),$created_date,Session::get('id')]); 
+            $insert = DB::insert('insert into hris.philhealth (price_min,price_max,[percent],fixed,created_by,updated_by,company_id) values (?,?,?,?,?,?,?)',[request('price_min'),request('price_max'),request('percent'),request('fixed'),Session::get('user'),Session::get('user'),Session::get('id')]); 
              $success_msg="Added Successfully!";
                 return redirect()->route('philhealth')->with([ 'success_msg' => $success_msg ]);
         }else{
@@ -45,7 +45,7 @@ class philhealthController extends Controller
              }
              else{
                   $updated_date = date("Y-m-d H:i:s");
-                $update =DB::update('update hris.philhealth set price_min=?,price_max =?,method=?,rate=?,update_at=?,updated_by=? where id = ?',[request('price_min'),request('price_max'),request('method'),request('rate') ,$updated_date,Session::get('user'),request('id')]);
+                $update =DB::update('update hris.philhealth set price_min=?,price_max =?,[percent]=?,fixed=?,updated_at=?,updated_by=? where id = ?',[request('price_min'),request('price_max'),request('percent'),request('fixed') ,$updated_date,Session::get('user'),request('id')]);
                 $success_msg="Updated Successfully!";
                 return redirect()->route('philhealth')->with([ 'success_msg' => $success_msg ]);
              }
