@@ -15,7 +15,6 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Desc</th>
                 <th>From</th>
                 <th>To</th>
                 <th>Rate</th>
@@ -29,7 +28,6 @@
             @foreach($tax_rate as $tax)
             <tr>
                 <td>{{$tax->name}}</td>
-                <td>{{$tax->description}}</td>
                 <td>{{$tax->price_min}}</td>
                 <td>{{$tax->price_max}}</td>
                 <td>{{$tax->rate}}</td>
@@ -41,8 +39,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#tax-rate" class="company_edit" data-name="{{$tax->name}}" data-price_min="{{$tax->price_min}}" data-price_max="{{$tax->price_max}}" data-desc="{{$tax->description}}" data-id="{{$tax->id}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#tax-rate"  data-id="{{$tax->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#tax-rate" class="company_edit" data-name="{{$tax->name}}" data-price_min="{{$tax->price_min}}" data-price_max="{{$tax->price_max}}" data-rate="{{$tax->rate}}" data-id="{{$tax->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="tax-rate-add" data-bs-target="#delete_pop"  data-id="{{$tax->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach

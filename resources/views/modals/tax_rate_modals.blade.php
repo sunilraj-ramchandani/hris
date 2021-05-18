@@ -12,6 +12,9 @@
             {{csrf_field()}}
                 <div class = "row">
                     <div class = "col-12 formsz">
+                        <div class="alert alert-warning modal-alert fade show d-none" id = "error" role="alert">
+                            <p>'From' cannot be larger than 'To'</p>
+                        </div>
                         <div class="form-group mt-4">
                             <label>Tax Classification Name</label>
                             <select name="classification_id" id="classification_id" class="mt-2 form-control">
@@ -24,11 +27,11 @@
                         </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (From)</label>
-                            <input type="number" name="from" id="from" class="mt-2 form-control">
+                            <input type="number" name="price_min" onkeyup="MinMaxValidate()" id="price_min" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Salary Range (To)</label>
-                            <input type="number" name="to" id="to" class="mt-2 form-control">
+                            <input type="number" name="price_max" onkeyup="MinMaxValidate()" id="price_max" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">
                             <label>Rate (%)</label>
