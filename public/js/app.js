@@ -4,6 +4,7 @@ $(document).ready(function() {
             if(i != 'bs-target' || i != 'bs-toggle'|| i != 'table'){
                 $("[name='"+i+"']").val(e);
             }
+            $('input[type=date]').prop({type:"text"});
         });
     });
     $(".delete_button").click(function(){

@@ -15,16 +15,11 @@
         <thead>
             <tr>
                 <th>Employee Number</th>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
+                <th>Full Name</th>
                 <th>Department</th>
                 <th>Branch</th>
                 <th>Cost Center</th>
                 <th>Position</th>
-                <th>Basic Pay</th>
-                <th>Vacation Leave (Days)</th>
-                <th>Sick Leave (Days)</th>
                 <th>Hiring Date</th>
                 <th>Employee Status</th>
                 @foreach($fields_value as $val)
@@ -37,17 +32,12 @@
             @foreach($employee as $emp)
             <tr>
                 <td>{{$emp->employee_number}}</td>
-                <td>{{$emp->lastname}}</td>
-                <td>{{$emp->firstname}}</td>
-                <td>{{$emp->middlename}}</td>
+                <td>{{$emp->lastname}}, {{$emp->firstname}} {{$emp->middlename}}</td>
                 <td>{{$emp->department}}</td>
                 <td>{{$emp->branch}}</td>
                 <td>{{$emp->cost_centers}}</td>
                 <td>{{$emp->position}}</td>
-                <td>{{$emp->basic_pay}}</td>
-                <td>{{$emp->vacation_leave}}</td>
-                <td>{{$emp->sick_leave}}</td>
-                <td>{{$emp->hiring_date}}</td>
+                <td>{{Carbon\Carbon::parse($emp->hiring_date)->format('F d, Y')}}</td>
                 <td>{{$emp->status}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $emp->id)
@@ -57,8 +47,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#employees" class="company_edit" ><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#employees"  data-id="{{$emp->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button data-status_id="{{$emp->status_id}}" data-hiring_date="{{Carbon\Carbon::parse($emp->hiring_date)->format('F d, Y')}}" data-id="{{$emp->id}}" data-sick_leave="{{$emp->sick_leave}}" data-vacation_leave="{{$emp->vacation_leave}}" data-basic_pay="{{$emp->basic_pay}}" data-position="{{$emp->pos_id}}" data-cost_centers="{{$emp->cost_id}}" data-branch="{{$emp->branch_id}}" data-department="{{$emp->department_id}}" data-middlename="{{$emp->middlename}}" data-firstname="{{$emp->firstname}}" data-employee_number="{{$emp->employee_number}}" data-lastname="{{$emp->lastname}}" class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#employees"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="employee-add" data-bs-target="#delete_pop" data-id="{{$emp->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -69,7 +59,7 @@
     @if($edit_roles == "edit")
     <div class = "row pt-4 mt-4">
         <div class = "col-12 text-right">
-            <button type="button" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#employees" style="color:white">Add New Employee</button>
+            <button type="button" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#employees" id ="add_emp" style="color:white">Add New Employee</button>
             <button type="button" class = "btn btn-warning add_custom_field" data-bs-toggle="modal"  data-table="employees" data-bs-target="#custom_field">Add Custom Field</button>
         </div>
     </div>
@@ -84,8 +74,20 @@
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
     } );
  
-    table.buttons().container()
-        .appendTo( $('#button_wrapper') );
+    table.buttons().container().appendTo( $('#button_wrapper') );
+    $("#add_emp").click(function() {
+        $('#hiring_date').prop({type:"date"});
+        $('#basic_pay').prop('readonly',false);
+        $('#vacation_leave').prop('readonly',false);
+        $('#sick_leave').prop('readonly',false);
+        $('#hiring_date').prop('readonly',false);
+    });
+    $(".edit_button").click(function() {
+        $('#basic_pay').prop('readonly',true);
+        $('#vacation_leave').prop('readonly',true);
+        $('#sick_leave').prop('readonly',true);
+        $('#hiring_date').prop('readonly',true);
+    });
 } );
 </script>
 @endsection

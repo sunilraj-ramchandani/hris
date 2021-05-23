@@ -106,7 +106,7 @@ use App\Http\Controllers\loanController;
     Route::post('/employee-allowance', [employeeController::class, 'update_emp_allowance'])->name('employee-emp-allowance.post');
     Route::post('/employee-allowance-add', [employeeController::class, 'add_emp_allowance'])->name('employee-emp-allowance.add');
 
-    //Employee Allowance
+    //Employee Loan
     Route::get('/employee-loan', [employeeController::class, 'index_emp_loan'])->name('employee-emp-loan');
     Route::post('/employee-loan', [employeeController::class, 'update_emp_loan'])->name('employee-emp-loan.post');
     Route::post('/employee-loan-add', [employeeController::class, 'add_emp_loan'])->name('employee-emp-loan.add');

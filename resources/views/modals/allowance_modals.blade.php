@@ -16,26 +16,26 @@
                             <label>Name</label>
                             <input type="text" name="name" id="name" class="mt-2 form-control">
                             <input type="hidden" name="id" id="id" class="mt-2 form-control">
-                        </div>
+                        </div> 
                         <div class="form-group mt-4">
                             <label>Description</label>
                             <textarea name="desc" id="desc" class="mt-2 form-control"> </textarea>
                         </div>
                         <div class="form-group mt-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="taxable" id="taxable">
+                                <input class="form-check-input" type="radio" name="taxable" value="0" id="taxable">
                                 <label class="form-check-label" for="taxable">
                                     Taxable
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="non-taxable" id="non-taxable" checked>
+                                <input class="form-check-input" type="radio" name="taxable" value="1" id="non-taxable">
                                 <label class="form-check-label" for="non-taxable">
                                     Non-Taxable
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" value="deminimis" id="deminimis" checked>
+                                <input class="form-check-input" type="radio" name="taxable" value="2" id="deminimis">
                                 <label class="form-check-label" for="deminimis">
                                     De Minimis
                                 </label>

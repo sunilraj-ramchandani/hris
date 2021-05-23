@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group mt-4">
                             <label>Interest Rate (%)</label>
-                            <input type="number" name="interest" id="interest" class="mt-2 form-control">
+                            <input type="number" step="0.01" name="interest" id="interest" class="mt-2 form-control">
                         </div>
                     </div>
                     <div class="form-group text-right mt-4">

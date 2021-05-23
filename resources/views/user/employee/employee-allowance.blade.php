@@ -18,6 +18,7 @@
                 <th>Full Name</th>
                 <th>Allowance Type</th>
                 <th>Amount</th>
+                <th>Status</th>
                 @foreach($fields_value as $val)
                 <th>{{$val->field_name}}</th>
                 @endforeach
@@ -25,12 +26,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($employee as $emp)
+            @foreach($employee_allowance as $emp)
             <tr>
                 <td>{{$emp->employee_number}}</td>
-                <td>{{$emp->lastname}},{{$emp->firstname}} {{$emp->middlename}}</td>
-                <td>{{$emp->allowance}}</td>
-                <td>{{$emp->amount}}</td>
+                <td>{{$emp->lastname}}, {{$emp->firstname}} {{$emp->middlename}}</td>
+                <td>{{$emp->name}}</td>
+                <td>{{number_format($emp->amount, 2, '.', ',')}}</td>
+                <td>{{$emp->status}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $emp->id)
                         <td>{{$val->custom_value}}</td>
@@ -39,8 +41,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#employees_allowance" class="company_edit" ><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#employees_allowance"  data-id="{{$emp->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#employees_allowance" data-emp_id="{{$emp->emp_id}}" data-amount="{{number_format($emp->amount, 2, '.', ',')}}" data-allowance="{{$emp->all_id}}" data-status="{{$emp->status}}" data-first_payout="{{$emp->first_payout}}" data-second_payout="{{$emp->second_payout}}" data-third_payout="{{$emp->third_payout}}" data-fourth_payout="{{$emp->fourth_payout}}" data-id="{{$emp->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="employee-allowance-add" data-bs-target="#delete_pop"  data-id="{{$emp->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -74,6 +76,30 @@ $(document).ready(function() {
         tags: false,
         dropdownParent: $("#employees_allowance")
     });
+});
+$(".edit_button").click(function() {
+    $('#emp_id').val($(this).data("emp_id")); // Select the option with a value of '1'
+    $('#emp_id').trigger('change'); 
+    if($(this).data("first_payout") == 1){
+        $('#first_payout').prop('checked',true);
+    }else{
+        $('#first_payout').prop('checked',false);
+    }
+    if($(this).data("second_payout") == 1){
+        $('#second_payout').prop('checked',true);
+    }else{
+        $('#second_payout').prop('checked',false);
+    }
+    if($(this).data("third_payout") == 1){
+        $('#third_payout').prop('checked',true);
+    }else{
+        $('#third_payout').prop('checked',false);
+    }
+    if($(this).data("fourth_payout") == 1){
+        $('#fourth_payout').prop('checked',true);
+    }else{
+        $('#fourth_payout').prop('checked',false);
+    }
 });
 </script>
 @endsection

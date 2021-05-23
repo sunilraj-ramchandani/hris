@@ -16,12 +16,12 @@ class Universal extends Model
         return $var_table;
     }
     public static function selectTableJoin($table, $table2,$fields){
-        $select = 'select '.implode ( ',' , $fields).' from hris.'.$table . ' as A join hris.'.$table2 .' as B on A.id = B.'.$table . '_id where A.deleted_at is null and A.company_id ='.Session::get('company');
+        $select = 'select '.implode ( ',' , $fields).' from hris.'.$table . ' as A join hris.'.$table2 .' as B on A.id = B.'.$table . '_id where B.deleted_at is null and A.company_id ='.Session::get('company');
         $var_table = DB::select($select);
         return $var_table;
     }
     public static function getEmployeeProfile(){
-        $employee = "select b.name, employee_number, lastname, firstname, middlename, d.name, c.name, p.name, basic_pay, vacation_leave, sick_leave,  hiring_date, es.name 
+        $employee = "select e.id ,b.name as branch, b.id as branch_id,d.id as department_id,c.id as cost_id,es.id as status_id,p.id as pos_id, employee_number, lastname, firstname, middlename, b.name as branch ,d.name as department , c.name as cost_centers, p.name as position, basic_pay, vacation_leave, sick_leave,  hiring_date, es.name as status
             from hris.employees as e join hris.branch as b on b.id =  e.branch_id 
             join hris.department as d on d.id = e.department_id
             join hris.cost_centers as c on c.id = e.cost_centers_id

@@ -28,9 +28,9 @@
             @foreach($tax_rate as $tax)
             <tr>
                 <td>{{$tax->name}}</td>
-                <td>{{$tax->price_min}}</td>
-                <td>{{$tax->price_max}}</td>
-                <td>{{$tax->rate}}</td>
+                <td>{{number_format($tax->price_min, 2, '.', ',')}}</td>
+                <td>{{number_format($tax->price_max, 2, '.', ',')}}</td>
+                <td>{{$tax->rate}}%</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $tax->id)
                         <td>{{$val->custom_value}}</td>
@@ -39,7 +39,7 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#tax-rate" class="company_edit" data-name="{{$tax->name}}" data-price_min="{{$tax->price_min}}" data-price_max="{{$tax->price_max}}" data-rate="{{$tax->rate}}" data-id="{{$tax->id}}"><i class="fa fa-edit"></i></button> 
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#tax-rate" data-tax_classifications_id="{{$tax->id}}" data-name="{{$tax->name}}" data-price_min="{{$tax->price_min}}" data-price_max="{{$tax->price_max}}" data-rate="{{$tax->rate}}" data-id="{{$tax->bid}}"><i class="fa fa-edit"></i></button> 
                     <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="tax-rate-add" data-bs-target="#delete_pop"  data-id="{{$tax->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>

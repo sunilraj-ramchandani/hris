@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group mt-4">
                             <label>Tax Classification Name</label>
-                            <select name="classification_id" id="classification_id" class="mt-2 form-control">
+                            <select name="tax_classifications_id" id="tax_classifications_id" class="mt-2 form-control">
                                 <option disabled selected>Select a classification</option>
                                 @foreach($tax_classifications as $class)
                                 <option value="{{$class->id}}">{{$class->name}}</option>

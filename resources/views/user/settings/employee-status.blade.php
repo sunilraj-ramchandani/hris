@@ -41,8 +41,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#employee_status" class="company_edit" data-id="{{$emp->id}}" data-name="{{$emp->name}}" data-exclude="{{$emp->exclude}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#employee_status"  data-id="{{$emp->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#employee_status" data-id="{{$emp->id}}" data-name="{{$emp->name}}" data-desc="{{$emp->description}}" data-exclude="{{$emp->exclude}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="employee-status-add" data-bs-target="#delete_pop"  data-id="{{$emp->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -68,8 +68,14 @@
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
     } );
  
-    table.buttons().container()
-        .appendTo( $('#button_wrapper') );
+    table.buttons().container().appendTo( $('#button_wrapper') );
+    $(".edit_button").click(function() {
+        if($(this).data("exclude") == 1){
+            $('#exclude').prop('checked',true)   
+        }else{
+            $('#exclude').prop('checked',false)
+        }
+    });  
 } );
 </script>
 @endsection

@@ -36,7 +36,7 @@ class taxController extends Controller
             }else{
                 $edit_roles = "view";
             }
-            $tax_rate = Universal::selectTableJoin('tax_classifications','tax_rate',['name','description','b.id','price_min','price_max','rate']);
+            $tax_rate = Universal::selectTableJoin('tax_classifications','tax_rate',['name','a.id','description','b.id AS bid','price_min','price_max','rate']);
             $tax_classifications = Universal::selectTable('tax_classifications');
             $fields_value = CustomField::getFieldsValue('tax_rate');
             $fields = Company::getCompanyFields('tax_rate');
@@ -47,7 +47,7 @@ class taxController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
-     public function add(Request $request){
+    public function add(Request $request){
         if(request('id')==''){
             $created_date = date("Y-m-d H:i:s");
             $insert = DB::insert('insert into hris.tax_classifications (name,description,created_by,updated_by,company_id) values (?,?,?,?,?)',[request('name'),request('desc'),Session::get('user'),Session::get('user'),Session::get('id')]); 
@@ -68,5 +68,26 @@ class taxController extends Controller
                 return redirect()->route('tax')->with([ 'success_msg' => $success_msg ]);
              }
         } 
+    }
+    public function add_rate(Request $request){
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.tax_rate(tax_classifications_id,price_min,price_max,rate,created_by,updated_by,company_id) values (?,?,?,?,?,?,?)',[request('tax_classifications_id'),request('price_min'),request('price_max'),request('rate'),Session::get('user'),Session::get('user'),Session::get('company')]);
+            $success_msg="Added Successfully!";
+            return redirect()->route('tax-rate')->with([ 'success_msg' => $success_msg ]);
+        }else{
+            if(request('tax_classifications_id')==''){
+                $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.tax_rate set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Deleted Successfully!";
+                return redirect()->route('tax-rate')->with([ 'success_msg' => $success_msg ]);
+            }
+            else{
+                $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.tax_rate set tax_classifications_id=?,price_min=?,price_max=?,rate=?,updated_at=?,updated_by=? where id = ?',[request('tax_classifications_id'),request('price_min'),request('price_max'),request('rate'),$updated_date,Session::get('user'),request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('tax-rate')->with([ 'success_msg' => $success_msg ]);
+            }
+        }
     }
 }

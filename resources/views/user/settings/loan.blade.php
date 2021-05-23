@@ -28,7 +28,7 @@
             <tr>
                 <td>{{$loans->name}}</td>
                 <td>{{$loans->description}}</td>
-                <td>{{$loans->interest}}</td>
+                <td>{{$loans->interest}}%</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $loans->id)
                         <td>{{$val->custom_value}}</td>
@@ -37,8 +37,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#loan" class="company_edit" data-name="{{$loan->name}}" data-id="{{$loan->id}}" data-interest="{{$loan->interest}}" data-desc="{{$loan->description}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#loan"  data-id="{{$loan->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#loan" data-name="{{$loans->name}}" data-id="{{$loans->id}}" data-interest="{{$loans->interest}}" data-desc="{{$loans->description}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="loan-add" data-bs-target="#delete_pop"  data-id="{{$loans->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -50,7 +50,7 @@
     <div class = "row pt-4 mt-4">
         <div class = "col-12 text-right">
             <button type="button" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#loan" style="color:white">Add New Loan</button>
-            <button type="button" class = "btn btn-warning add_custom_field" data-bs-toggle="modal"  data-table="loan" data-bs-target="#custom_field">Add Custom Field</button>
+            <button type="button" class = "btn btn-warning add_custom_field" data-bs-toggle="modal"  data-table="loan-add" data-bs-target="#custom_field">Add Custom Field</button>
         </div>
     </div>
 

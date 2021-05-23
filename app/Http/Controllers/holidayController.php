@@ -47,7 +47,7 @@ class holidayController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
-   public function add(Request $request){
+    public function add(Request $request){
         if(request('id')==''){
             $created_date = date("Y-m-d H:i:s");
             $insert = DB::insert('insert into hris.holiday (name,description,rate,created_by,updated_by,company_id) values (?,?,?,?,?,?)',[request('name'),request('desc'),request('rate'),Session::get('user'),Session::get('user'),Session::get('id')]); 
@@ -68,5 +68,25 @@ class holidayController extends Controller
                 return redirect()->route('holiday')->with([ 'success_msg' => $success_msg ]);
              }
         } 
+    }
+    public function add_date(Request $request){
+        if(request('id')==''){
+            $created_date = date("Y-m-d H:i:s");
+            $insert = DB::insert('insert into hris.holiday_date(holiday_id,holiday_date,status,created_by,updated_by,company_id) values (?,?,?,?,?,?)',[request('holiday_id'),request('holiday_date'),request('status'),Session::get('user'),Session::get('user'),Session::get('company')]);
+            $success_msg="Added Successfully!";
+            return redirect()->route('holiday-date')->with([ 'success_msg' => $success_msg ]);
+        }else{
+            if(request('holiday_date')==''){
+                $deleted_date = date("Y-m-d H:i:s");
+                $delete=DB::update('update hris.holiday_date set deleted_at=?, deleted_by=? where id=?',[$deleted_date,Session::get('user'),request('id')]);
+                $success_msg="Deleted Successfully!";
+                return redirect()->route('holiday-date')->with([ 'success_msg' => $success_msg ]);
+            }else{
+                $updated_date = date("Y-m-d H:i:s");
+                $update =DB::update('update hris.holiday_date set holiday_id=?,holiday_date=?,status=?,updated_at=?,updated_by=? where id = ?',[request('holiday_id'),request('holiday_date'),request('status'),$updated_date,Session::get('user'),request('id')]);
+                $success_msg="Updated Successfully!";
+                return redirect()->route('holiday-date')->with([ 'success_msg' => $success_msg ]);
+            }
+        }
     }
 }

@@ -23,8 +23,8 @@ class Employee extends Model
     }
     public static function employeeAllowanceDeduction($table, $table2,$table3,$fields){
         $select = 'select '.implode ( ',' , $fields).' from hris.'.$table . ' as A 
-        join hris.'.$table2 .' as B on B.id = A.'.$table . '_id 
-        join hris.'.$table3 .' as C on C.id = A.'.$table . '_id 
+        join hris.'.$table2 .' as B on B.id = A.'.$table2.'_id 
+        join hris.'.$table3 .' as C on C.id = A.'.$table3.'_id 
         where A.deleted_at is null and A.company_id ='.Session::get('company');
         $var_table = DB::select($select);
         return $var_table;

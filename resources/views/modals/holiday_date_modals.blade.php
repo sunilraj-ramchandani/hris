@@ -13,8 +13,16 @@
                 <div class = "row">
                     <div class = "col-12 formsz">
                         <div class="form-group mt-4">
+                            <label>Holiday Classification</label>
+                            <select name="holiday_id" id ="holiday_id" class="mt-2 form-control">
+                                @foreach($holiday as $hol)
+                                <option value="{{$hol->id}}">{{$hol->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group mt-4">
                             <label>Holiday Date</label>
-                            <input type="date" name="date" id="date" class="mt-2 form-control">
+                            <input type="date" name="holiday_date" id="holiday_date" class="mt-2 form-control">
                             <input type="hidden" name="id" id="id" class="mt-2 form-control">
                         </div>
                         <div class="form-group mt-4">

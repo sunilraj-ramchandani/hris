@@ -30,8 +30,8 @@
             <tr>
                 <td>{{$date->name}}</td>
                 <td>{{$date->description}}</td>
-                <td>{{$date->rate}}</td>
-                <td>{{$date->holiday_date}}</td>
+                <td>{{number_format($date->rate, 2, '.', ',')}}%</td>
+                <td>{{Carbon\Carbon::parse($date->holiday_date)->format('F d, Y')}}</td>
                 <td>{{$date->status}}</td>
                 @foreach($fields_value as $val)
                     @if($val->company_id == $date->id)
@@ -41,8 +41,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#holiday_date" class="company_edit" data-id="{{$date->id}}" data-holiday_date="{{$date->holiday_date}}" data-status="{{$date->status}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#holiday_date"  data-id="{{$holi->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#holiday_date" data-id="{{$date->id}}" data-holiday_date="{{$date->holiday_date}}" data-status="{{$date->status}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="holiday-date-add" data-bs-target="#delete_pop"  data-id="{{$date->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach

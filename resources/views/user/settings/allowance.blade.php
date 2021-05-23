@@ -28,10 +28,12 @@
             <tr>
                 <td>{{$all->name}}</td>
                 <td>{{$all->description}}</td>
-                @if($all->taxable == 1)
-                <td>Yes</td>
+                @if($all->taxable == 0)
+                <td>Taxable</td>
+                @elseif($all->taxable == 1)
+                <td>Non-Taxable</td>
                 @else
-                <td>No</td>
+                <td>Deminimis</td>
                 @endif
                 @foreach($fields_value as $val)
                     @if($val->company_id == $all->id)
@@ -41,8 +43,8 @@
                     @endif
                 @endforeach
                 <td>
-                    <button class="company_edit btn btn-info" data-bs-toggle="modal" data-bs-target="#allowance" class="company_edit" data-name="{{$all->name}}" data-id="{{$all->id}}"  data-tax="{{$all->taxable}}"><i class="fa fa-edit"></i></button> 
-                    <button class="company_delete btn btn-danger" data-bs-toggle="modal" data-bs-target="#allowance"  data-id="{{$phealth->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="edit_button btn btn-info" data-bs-toggle="modal" data-bs-target="#allowance" data-name="{{$all->name}}" data-id="{{$all->id}}"  data-desc="{{$all->description}}" data-tax="{{$all->taxable}}"><i class="fa fa-edit"></i></button> 
+                    <button class="delete_button btn btn-danger" data-bs-toggle="modal" data-table="allowance-add" data-bs-target="#delete_pop"  data-id="{{$all->id}}"><i class="fas fa-trash-alt"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -62,7 +64,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+$(document).ready(function() {
     var table = $('#allowance-table').DataTable( {
         lengthChange: true,
         buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
@@ -70,6 +72,21 @@
  
     table.buttons().container()
         .appendTo( $('#button_wrapper') );
+    $(".edit_button").click(function() {
+        if($(this).data("tax") == 0){
+            $('#taxable').prop('checked',true)
+            $('#non-taxable').prop('checked',false)
+            $('#deminimis').prop('checked',false)
+        }else if($(this).data("tax") == 1){
+            $('#non-taxable').prop('checked',true)
+            $('#taxable').prop('checked',false)
+            $('#deminimis').prop('checked',false)
+        }else{
+            $('#deminimis').prop('checked',true)
+            $('#non-taxable').prop('checked',false)
+            $('#taxable').prop('checked',false)
+        }
+    });   
 } );
 </script>
 @endsection

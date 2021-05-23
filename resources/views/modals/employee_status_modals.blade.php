@@ -22,7 +22,7 @@
                             <textarea name="desc" id="desc" class="mt-2 form-control"> </textarea>
                         </div>
                         <div class="form-group mt-4">
-                            <input class="form-check-input" type="checkbox" value="1" id="exclude">
+                            <input class="form-check-input" type="checkbox" name="exclude" value="1" id="exclude">
                             <label class="form-check-label" for="exclude">
                               Exclude on Payroll Process
                             </label>
