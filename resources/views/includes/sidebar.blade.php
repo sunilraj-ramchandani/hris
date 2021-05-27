@@ -103,6 +103,51 @@
                                         <a href="/employee" class="nav__dropdown-item">Employee Profile</a>
                                         <a href="/employee-allowance" class="nav__dropdown-item">Employee Allowance</a>
                                         <a href="/employee-loan" class="nav__dropdown-item">Employee Loan</a>
+                                        <a href="/employee-transfer" class="nav__dropdown-item">Employee Transfer</a>
+                                        <a href="/employee-increase" class="nav__dropdown-item">Employee Pay Increase</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav__dropdown">
+                                <a href="/employee" class="nav__link">
+                                    <i class='bx bx-bell nav__icon' ></i>
+                                    <span class="nav__name">Change Requests</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/request-transfer" class="nav__dropdown-item">Employee Transfer</a>
+                                        <a href="/request-increase" class="nav__dropdown-item">Employee Pay Increase</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav__dropdown">
+                                <a href="/employee" class="nav__link">
+                                    <i class='bx bx-bell nav__icon' ></i>
+                                    <span class="nav__name">Approvals</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/approval-transfer" class="nav__dropdown-item">Employee Transfer</a>
+                                        <a href="/approval-increase" class="nav__dropdown-item">Employee Pay Increase</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nav__dropdown">
+                                <a href="/time-keeping" class="nav__link">
+                                    <i class='bx bx-bell nav__icon' ></i>
+                                    <span class="nav__name">Time Keeping</span>
+                                    <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                </a>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/time-keeping" class="nav__dropdown-item">Employee Time</a>
+                                    </div>
+                                </div>
+                                <div class="nav__dropdown-collapse">
+                                    <div class="nav__dropdown-content">
+                                        <a href="/time-entry" class="nav__dropdown-item">Employee Time Entry</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,10 +155,7 @@
                                 <i class='bx bx-message-rounded nav__icon' ></i>
                                 <span class="nav__name">Messages</span>
                             </a>
-                            <a href="#" class="nav__link">
-                                <i class='bx bx-compass nav__icon' ></i>
-                                <span class="nav__name">Explore</span>
-                            </a>
+
                             <a href="#" class="nav__link">
                                 <i class='bx bx-bookmark nav__icon' ></i>
                                 <span class="nav__name">Saved</span>

@@ -18,6 +18,8 @@ use App\Http\Controllers\holidayController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\allowanceController;
 use App\Http\Controllers\loanController;
+use App\Http\Controllers\approvalController;
+use App\Http\Controllers\timeKeepController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +87,13 @@ use App\Http\Controllers\loanController;
     Route::post('/holiday-date', [holidayController::class, 'update_date'])->name('holiday-date.post');
     Route::post('/holiday-date-add', [holidayController::class, 'add_date'])->name('holiday-date.add');
     
+    //Employee Time Keeping
+    Route::get('/time-keeping', [timeKeepController::class, 'index'])->name('time-keeping');
+    Route::post('/time-keeping-add', [timeKeepController::class, 'add'])->name('time-keeping.add');
+
+    //Employee Time Entry
+    Route::get('/time-entry', [timeKeepController::class, 'index_entry'])->name('time-entry');
+    Route::post('/time-entry-add', [timeKeepController::class, 'add_entry'])->name('time-entry.add');
 
     //Employee Profile
     Route::get('/employee', [employeeController::class, 'index'])->name('employee');
@@ -103,22 +112,42 @@ use App\Http\Controllers\loanController;
 
     //Employee Allowance
     Route::get('/employee-allowance', [employeeController::class, 'index_emp_allowance'])->name('employee-emp-allowance');
-    Route::post('/employee-allowance', [employeeController::class, 'update_emp_allowance'])->name('employee-emp-allowance.post');
     Route::post('/employee-allowance-add', [employeeController::class, 'add_emp_allowance'])->name('employee-emp-allowance.add');
 
     //Employee Loan
     Route::get('/employee-loan', [employeeController::class, 'index_emp_loan'])->name('employee-emp-loan');
-    Route::post('/employee-loan', [employeeController::class, 'update_emp_loan'])->name('employee-emp-loan.post');
     Route::post('/employee-loan-add', [employeeController::class, 'add_emp_loan'])->name('employee-emp-loan.add');
+
+    //Employee Transfer
+    Route::get('/employee-transfer', [employeeController::class, 'index_emp_transfer'])->name('employee-transfer');
+    Route::post('/employee-transfer-add', [employeeController::class, 'add_emp_transfer'])->name('employee-transfer.add');
+
+    //Employee Pay Increase
+    Route::get('/employee-increase', [employeeController::class, 'index_emp_increase'])->name('employee-increase');
+    Route::post('/employee-increase-add', [employeeController::class, 'add_emp_increase'])->name('employee-increase.add');
+    
+    //Request Employee Increase
+    Route::get('/request-increase', [approvalController::class, 'index_increase'])->name('request-increase');
+    Route::post('/request-increase-add', [approvalController::class, 'add_increase'])->name('request-increase.add');
+
+    //Request Employee Transfer
+    Route::get('/request-transfer', [approvalController::class, 'index_transfer'])->name('request-transfer');
+    Route::post('/request-transfer-add', [approvalController::class, 'add_transfer'])->name('request-transfer.add');
+
+    //Approval Employee Transfer
+    Route::get('/approval-transfer', [approvalController::class, 'index_approval_transfer'])->name('approval-transfer');
+    Route::post('/approval-transfer-add', [approvalController::class, 'add_approval_transfer'])->name('approval-transfer.add');
+
+    //Approval Employee Increase
+    Route::get('/approval-increase', [approvalController::class, 'index_approval_increase'])->name('approval-increase');
+    Route::post('/approval-increase-add', [approvalController::class, 'add_approval_increase'])->name('approval-increase.add');
 
     //Allowance
     Route::get('/allowance', [allowanceController::class, 'index'])->name('allowance');
-    Route::post('/allowance', [allowanceController::class, 'update'])->name('allowance.post');
     Route::post('/allowance-add', [allowanceController::class, 'add'])->name('allowance.add');
 
     //Loans
     Route::get('/loan', [loanController::class, 'index'])->name('loan');
-    Route::post('/loan', [loanController::class, 'update'])->name('loan.post');
     Route::post('/loan-add', [loanController::class, 'add'])->name('loan.add');
 
     //LOGIN
