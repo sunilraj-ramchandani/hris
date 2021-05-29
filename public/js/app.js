@@ -15,11 +15,13 @@ $(document).ready(function() {
         $("input").each(function(){
             $(this).val('');
         });
+        $(".hidden").empty();
     });
     $('.modal').on('hidden.bs.modal', function (e) {
         $("input").each(function(){
             $(this).val('');
         });
+        $(".hidden").empty();
         $(".modal-alert").each(function(){
             $(this).addClass('d-none');
         });

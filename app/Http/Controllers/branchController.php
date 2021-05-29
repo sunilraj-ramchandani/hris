@@ -34,7 +34,7 @@ class branchController extends Controller
             return redirect()->route('login.get')->with([ 'error_msg' => $error_msg ]);
         }
     }
-     public function add(Request $request){
+    public function add(Request $request){
         if(request('id')==''){
             $created_date = date("Y-m-d H:i:s");
             $insert = DB::insert('insert into hris.branch (name,address,created_by,updated_by,created_at,company) values (?,?,?,?,?,?)', [request('name'), request('address'),Session::get('user'),Session::get('user'), $created_date,Session::get('company')]); 

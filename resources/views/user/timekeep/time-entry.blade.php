@@ -53,7 +53,7 @@
     @if($edit_roles == "edit")
     <div class = "row pt-4 mt-4">
         <div class = "col-12 text-right">
-            <button type="button" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#time_entry" style="color:white">Enter New Time</button>
+            <button type="button" class = "btn btn-info new-time" data-bs-toggle="modal" data-bs-target="#time_entry" style="color:white">Enter New Time</button>
             <button type="button" class = "btn btn-warning add_custom_field" data-bs-toggle="modal"  data-table="time_entry" data-bs-target="#custom_field">Add Custom Field</button>
         </div>
     </div>

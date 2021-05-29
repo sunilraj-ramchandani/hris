@@ -10,6 +10,7 @@ use Session;
 
 class Universal extends Model
 {
+    
     public static function selectTable($table){
         $select = 'select * from hris.'.$table . ' where deleted_at is null and company_id ='.Session::get('company');
         $var_table = DB::select($select);
@@ -25,8 +26,38 @@ class Universal extends Model
         $var_table = DB::select($select);
         return $var_table;
     }
+    public static function selectTableSumWhere($table,$sum,$where,$answer,$operand){
+        $select = "select ISNULL(sum(".$sum."),0) as total from hris.".$table . " where deleted_at is null and company_id =".Session::get("company") ." and ".$where." ".$operand." '".$answer."'";
+        $var_table = DB::select($select);
+        return $var_table;
+    }
+    public static function selectTableSumDoubleWhere($table,$sum,$where,$answer,$where2,$answer2,$operand){
+        $select = "select ISNULL(sum(".$sum."),0) as total from hris.".$table . " where deleted_at is null and company_id =".Session::get("company") ." and ".$where." ".$operand." '".$answer."' and ".$where2." ".$operand." '".$answer2."'";
+        $var_table = DB::select($select);
+        return $var_table;
+    }
+    public static function getRegularDays($id,$from,$to){
+        $select = "select ISNULL(sum(hours),0) as total from hris.time_entry where deleted_at is null and company_id =".Session::get("company") ." and employees_id = ".$id." and CONVERT(date,timein) >= '".$from."' and CONVERT(date,timein) <= '".$to."'";
+        $var_table = DB::select($select);
+        return $var_table;
+    }
     public static function selectTableJoin($table, $table2,$fields){
         $select = 'select '.implode ( ',' , $fields).' from hris.'.$table . ' as A join hris.'.$table2 .' as B on A.id = B.'.$table . '_id where B.deleted_at is null and A.company_id ='.Session::get('company');
+        $var_table = DB::select($select);
+        return $var_table;
+    }
+    public static function getTimeKeepDates($from, $to){
+        $select = "select a.name, a.rate, b.holiday_date from hris.holiday as a join hris.holiday_date as b on a.id = b.holiday_id where b.deleted_at is null and b.company_id =".Session::get("company") . " and b.holiday_date >= '".$from."' and b.holiday_date <= '".$to."'";
+        $var_table = DB::select($select);
+        return $var_table;
+    }
+    public static function getTimeKeep(){
+        $select = 'select a.id, date_from, date_to, b.name as branch,b.id as bid, c.name as cost,c.id as cid, d.name as department,d.id as did, a.status 
+        from hris.time_keep as a
+        LEFT join hris.branch as b on a.branch_id = b.id 
+        LEFT join hris.cost_centers as c on a.cost_center_id = c.id
+        LEFT join hris.department as d on a.department_id = d.id
+        where a.company_id='.Session::get('company');
         $var_table = DB::select($select);
         return $var_table;
     }

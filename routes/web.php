@@ -90,6 +90,7 @@ use App\Http\Controllers\timeKeepController;
     //Employee Time Keeping
     Route::get('/time-keeping', [timeKeepController::class, 'index'])->name('time-keeping');
     Route::post('/time-keeping-add', [timeKeepController::class, 'add'])->name('time-keeping.add');
+    Route::post('/time-keeping-ajax', [timeKeepController::class, 'index_emp_timekeep'])->name('time-keeping_emp.add');
 
     //Employee Time Entry
     Route::get('/time-entry', [timeKeepController::class, 'index_entry'])->name('time-entry');

@@ -142,7 +142,7 @@
                                 </a>
                                 <div class="nav__dropdown-collapse">
                                     <div class="nav__dropdown-content">
-                                        <a href="/time-keeping" class="nav__dropdown-item">Employee Time</a>
+                                        <a href="/time-keeping" class="nav__dropdown-item">Time Keeping</a>
                                     </div>
                                 </div>
                                 <div class="nav__dropdown-collapse">
